@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>广州景区介绍</title>
+<style>
+  @charset "UTF-8";
+/* Body */
+body {
+	
+	background-color: #f2f2f2;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	font-style: normal;
+	font-weight: 200;
+}
+
+
+ul {
+        list-style: none;
+    }
+
+    a {
+        /* 去除下划线
+         */
+        text-decoration: none;
+        color: #00848a;
+        font-size: 20px;
+    }
+
+.home-1{
+  
+  color: #31A8DD;
+  height: 60px;
+  background-color: #62c1e9;
+  border-radius: 10px;
+}
+.home a{
+  text-decoration:none;
+  color: #f2f2f2;
+  font-size: 20px;
+  line-height: 60px;
+  float:right;
+  margin-right: 30px;
+
+}
+/* Container */
+.container {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	height: 1000px;
+	background-color: #FFFFFF;
+}
+.hero_header {
+	color: #FFFFFF;
+	text-align: center;
+  font-size: 150px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	letter-spacing: 4px;
+}
+/* 横幅 */
+.hero {
+  background: url(images/广州1.jpg);
+	/* background-color: #B3B3B3; */
+	padding-top: 150px;
+
+  /* 距离底部永远50px */
+	padding-bottom: 50px;
+}
+.tagline {
+	text-align: center;
+	color: #FFFFFF;
+	margin-top: 4px;
+	font-weight: lighter;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+/* About Section */
+.text_column {
+	width: 29%;
+	text-align: justify;
+	font-weight: lighter;
+	line-height: 25px;
+	float: left;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: #A3A3A3;
+}
+.about {
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-top: 35px;
+	display: inline-block;
+	background-color: #FFFFFF;
+	margin-top: 0px;
+}
+/* Stats Gallery */
+/*底部大标题文字*/
+.parallax {
+	
+	text-align: right;
+	padding-right: 900px;
+	padding-top: 180px;
+	font-size:70px;
+/*	间距*/
+	letter-spacing: 2px;
+	margin-top: 0px;
+}
+/*隐藏*/
+.hidden {
+	display: none;
+}
+
+/*	广州下面的间距*/
+.tagline {
+	margin-top: 20px;
+	line-height: 22px;
+}
+.parallax{
+	color: #110D0D;
+	background-color: #3b474d;
+  border-radius: 20px;
+
+}
+
+/* 习俗 */
+.jiesao-xishu{
+
+height: 600px;
+width: 100%;
+background-color:  rgb(255, 255, 255);
+border-radius: 10px;
+
+
+}
+
+
+.jiesao-xishu h1{
+font-size: 60px;
+/* 字体 */
+text-align: center;
+
+/* 间距 */
+letter-spacing: 2px;
+color: #222627;
+margin: 10px;
+border-radius: 10px;
+
+}
+.jiesao-xishu p{
+text-align: center;
+letter-spacing: 2px;
+color: rgb(22, 61, 80);
+
+
+}
+.jiesao-xishu img{
+height: 300px; 
+width: 200px;
+border-radius: 10px;
+
+
+
+}
+
+
+/* 导航目录 */
+.daohan{
+  border: #00848a 1px solid;
+ background-color: #31A8DD;
+ border-radius: 20px;
+ position: relative;
+}
+.daohan-muluwenz{
+  height: 40px;
+        line-height: 40px;
+        /* 文字居中 */
+        text-align: center;
+        border: #083133 1px solid;
+        border-radius: 10px;
+        margin: 5px 0;
+        width: 90px;
+        padding: 0 10px;
+        background-color: #ffffff;
+        /* 水平，垂直，阴影距离  模糊程度 */
+        box-shadow: 0 0 5px 0 rgb(0, 0, 0);
+        
+
+        /* 固定 */
+        box-sizing: border-box;
+}
+
+.daohan-wenz{
+  background-color: #29a1d8;
+}
+
+
+
+
+/* 导航栏 */
+.daohan-jingdian{
+  display: none;
+  margin: 10px;
+  color: #2d9ce6;
+}
+.daohan-jingdian a{
+background-color: #46a1cc;
+border-radius: 20px;
+color: #FFFFFF;
+font-size: 20px;
+}
+.on{
+  display: block;
+}
+
+.jieshao{
+  position: absolute;
+  background-color: #a2e4e7;
+  float: right;
+  width: 1100px;
+  position: relative;
+  height: 220px;
+  margin:-220px 75px 0 0;
+  border-radius: 20px;
+  
+}
+</style>
+<script>
+   window.onload = function (){
+   // tab切换
+  //  这个是你想要定位到哪的地方的class
+   var aList = document.getElementsByClassName("daohan-muluwenz"),
+  //  第二个存放有效果的样式
+            aTab = document.getElementsByClassName("daohan-jingdian"),
+            // 这个记录上次高亮的地方
+            cityIndex = 0;
+
+        // 遍历全部列表
+        for (var a = 0; a < aList.length; a++) {
+            // 闭包加函数执行
+            (
+                function (a) {
+                    // 给每一个li列表添加事件
+                    aList[a].onclick = function () {
+                        aList[cityIndex].classList.remove("daohan-wenz");
+                        aTab[cityIndex].classList.remove("on");
+                        cityIndex = a;
+                        aList[a].classList.add("daohan-wenz");
+                        aTab[a].classList.add("on");
+                    }
+                })(a)
+
+        }}
+</script>
+</head>
+<body> 
+  <div class="home-1"><ul class="home">
+    <a href="index.html">回到主页</a>
+  
+  </ul>
+
+
+  </div>
+<div class="container"> 
+ 
+  
+  
+  <section class="hero" id="hero" >
+	  
+    <h2 class="hero_header">广州</h2>
+    <p class="tagline">广州好玩的地方有哪些？</p>
+    <div class="daohan">
+      <ul class="daohan-mulu">
+        <li  class="daohan-muluwenz daohan-wenz">广州</li>
+        <li  class="daohan-muluwenz">湛江</li>
+        <li  class="daohan-muluwenz">大理</li>
+        <li  class="daohan-muluwenz">杭州</li>
+        <li  class="daohan-muluwenz">青岛</li>
+
+        
+  
+  <div class="jieshao">
+      
+    <div class="daohan-jingdian  on">
+      <h2>广州好玩点</h2>
+      <img src="images/广州1.jpg" alt="" width="150" height="100">
+      <img src="images/广州2.jpg" alt="" width="150" height="100">
+      <img src="images/广州3.jpg" alt="" width="150" height="100">
+      <img src="images/广州4.jpg" alt="" width="150" height="100">
+      <img src="images/广州5.jpg" alt="" width="150" height="100">
+      <img src="images/广州6.jpg" alt="" width="150" height="100">
+      <a href="广州景区介绍.html">点我跳到广州</a>
+
+    </div>
+    
+    <div class="daohan-jingdian">
+      <h2>湛江好玩点</h2>
+      <img src="images/湛江1.jpg" alt="" width="150" height="100">
+      <img src="images/湛江2.jpg" alt="" width="150" height="100">
+      <img src="images/湛江3.jpg" alt="" width="150" height="100">
+      <img src="images/湛江4.jpg" alt="" width="150" height="100">
+      <img src="images/湛江5.jpg" alt="" width="150" height="100">
+      <img src="images/湛江6.jpg" alt="" width="150" height="100">
+      <a href="湛江景区介绍.html">点我跳到湛江</a>
+    </div>
+    
+    <div class="daohan-jingdian">
+      <h2>大理好玩点</h2>
+      <img src="images/大理1.jpg" alt="" width="150" height="100">
+      <img src="images/大理2.jpg" alt="" width="150" height="100">
+      <img src="images/大理3.jpg" alt="" width="150" height="100">
+      <img src="images/大理4.jpg" alt="" width="150" height="100">
+      <img src="images/大理5.jpg" alt="" width="150" height="100">
+      <img src="images/大理6.jpg" alt="" width="150" height="100">
+      <a href="大理景区介绍.html">点我跳到大理</a>
+    </div>
+    
+    <div class="daohan-jingdian">
+      <h2>杭州好玩点</h2>
+      <img src="images/杭州1.jpg" alt="" width="150" height="100">
+      <img src="images/杭州2.jpg" alt="" width="150" height="100">
+      <img src="images/杭州3.jpg" alt="" width="150" height="100">
+      <img src="images/杭州4.jpg" alt="" width="150" height="100">
+      <img src="images/杭州5.jpg" alt="" width="150" height="100">
+      <img src="images/杭州6.jpg" alt="" width="150" height="100">
+      <a href="杭州景区介绍.html">点我跳到杭州</a>
+    </div>
+    
+    <div class="daohan-jingdian">
+      <h2>青岛好玩点</h2>
+      <img src="images/青岛1.jpg" alt="" width="150" height="100">
+      <img src="images/青岛2.jpg" alt="" width="150" height="100">
+      <img src="images/青岛3.jpg" alt="" width="150" height="100">
+      <img src="images/青岛4.jpg" alt="" width="150" height="100">
+      <img src="images/青岛5.jpg" alt="" width="150" height="100">
+      <img src="images/青岛6.jpg" alt="" width="150" height="100">
+      <a href="青岛景区介绍.html">点我跳到青岛</a>
+    </div>
+  </div>
+
+
+
+      </ul>
+    </div>
+	  
+
+  </section>
+  <!-- 景区介绍 -->
+  <section class="about" id="about">
+    <h2 class="hidden">About</h2>
+    <h1>广州必打卡项目——广州塔&nbsp;</h1>
+    <p class="text_column">广州塔建筑总高度600米，其中主塔体高450米，天线桅杆高150米，以中国第一、世界第三观光塔的地位，向世人展示腾飞广州、挑战自我、面向世界的视野和气魄。广州塔，因其独特设计造型，与珠江交相辉映，成为新中轴线上的亮丽景观。 </p>
+    <p class="text_column">广州塔营业时间为09:30-22:30，票厅售票及游客入塔时间为09:30-22:00，七月、八月，国家法定节假日，周五至周日以售票厅公开的运营时间为准 </p>
+    <p class="text_column">广州塔矗立在广州城市新中轴线与珠江景观线的交汇处，与海心沙亚运公园和珠江新城隔江相望，与广州歌剧院、广东省博物馆、广州图书馆、广州第二少年宫四大文化建筑遥相呼应，是广州新的制高点。广州塔塔体高约450米，天线桅杆高150米，以总高度600米占据世界第一至高电视塔的地位。 </p>
+    <img src="images/广州1.jpg" alt="" width="300px" height="200px">
+  </section>
+  <hr>
+	
+  <section class="about" >
+    <h2 class="hidden">About</h2>
+    <h1>广州必打卡项目——&nbsp;珠江夜游</h1>
+    <p class="text_column">珠江游是南国羊城的一大特色游，珠江美景可媲美于香港维多利亚港，其景色迷人，碧水潋艳，华灯闪烁，犹如七色明珠镶嵌十里珠江，汇成一条异彩纷呈的珠江彩虹。沿江可观赏到“鹅潭夜月”、“双桥烟雨”、“珠海丹心”、“珠江秋月”、“珠水晴波”等羊城美景，还有珠江两岸三十多个文化历史景点，使你尽情领略南国风土人情。 </p>
+    <p class="text_column">天字码头位于越秀区沿江中路(与著名的北京路步行街相连)，交通便利。 地铁： 乘坐地铁2号线海珠广场A出口面对江向左走350米就到天字码头，也可以乘坐地铁6号线北京路站A出口面向南走300米就到天字码头 </p>
+    <p class="text_column">乘坐公交车： 南关站下向前走100米： 公交车： 夜1路 1路 夜8路 10路 夜16路 夜32路 183路 194路 219路 544路 天字码头站向回走100米： 公交车：旅游2线、4路、夜31路、57路、128路、131B、131A、208路、238路公交车可达。。 </p>
+    <img src="images/广州2.jpg" alt="" width="300px" height="200px"  style="margin:213px 0 0 -1236px;">
+  </section>
+  <hr>
+	 <section class="about" >
+    <h2 class="hidden">About</h2>
+    <h1>广州必打卡项目——白云山&nbsp;</h1>
+    <p class="text_column">白云山由30多座山峰组成，峰峦重叠,溪涧纵横,登高可俯览全市，遥望珠江。每当雨后天晴或暮春时节，山间白云缭绕，蔚为奇观，白之名由此得来。 白云山风景区是新"羊城八景"之首，素有"南越第一山"、“羊城第一秀"之称。自古以来，白云山一直是广州有名的风景胜地，历史上羊城八景中的"菊湖云影"、，"白.云晚望"、"蒲间濂泉"、" 景泰僧归' 都在白云里 </p>
+    <p class="text_column">白云山，是新“羊城八景”之首、国家重点风景名胜区、全国文明风景旅游区和国家AAAAA级景区。它位于广州市的 东北部，为南粤名山之一，自古就有“羊城第一秀”之称。山体相当宽阔，由30多座山峰组成，为广东最高峰九连山的支脉。面积20.98平方公里，主峰摩星 岭高382米，峰峦重叠，溪涧纵横，登高可俯览全市，遥望珠江。每当雨后天晴或暮春时节，山间白云缭绕，蔚为奇观，白云山之名由此得来。 </p>
+    <p class="text_column">开放时间：6：30--21：00 门票价格：进山门票5元 </p>
+    <img src="images/广州5.jpg" alt="" width="300px" height="200px" style="margin:213px 0 0 -1236px;">
+  </section>
+  
+             <!-- 广州习俗 -->
+             <div class="jiesao-xishu" title="2">
+
+                <h1>广州习俗</h1><br>
+                <p>老广州，粤语的城市，老西关的味道</p>
+                <img src="images/广州7.jpg" >
+                <img src="images/广州8.jpg" >
+                <img src="images/广州9.jpg" >
+            
+
+                <p>1.春节期间的除夕迎春花市和元宵节，端午节， 番禺荷花节，从化、增城的荔枝节，重阳节，中国旅游艺术节暨广东欢乐节，广州国际美食节等。
+                    2.还有每年元旦均举行的广州风情贺年缤纷大巡游，中秋节的中秋灯会，以及10月举行的广州旅游文艺会演等，为广州市这座"花城"增添了绚丽的色彩。
+                    
+                    3.春节风俗，插桃花、摆年橘、团年饭、煮汤圆、逗利是（领红包）、行花街、开年、人日、闹元宵、游花地等；</p>
+
+            </div>
+
+
+ 
+<hr>
+  <section class="banner">
+    <h2 class="parallax">广州欢迎你&nbsp;</h2>
+    
+
+   
+  </section>
+
+ </div>
+</body>
+</html>

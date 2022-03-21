@@ -1,0 +1,726 @@
+
+    body {
+        width: 100%;
+        font-family: "微软雅黑";
+        /* 从上到下渐变  加to right可以设置从左到右渐变*/  
+        background-image:  linear-gradient(#4ed9f1, #2d5a85);;
+    }
+
+    * {
+
+        padding: 0;
+        margin: 0;
+
+    }
+
+    .clear {
+        /* 清除浮动 */
+        clear: both;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    a {
+        /* 去除下划线
+         */
+        text-decoration: none;
+        color: #00848a;
+        font-size: 20px;
+    }
+
+    input {
+        /* 外边框都去掉 */
+        border: none;
+        outline: none;
+    }
+
+    .nav-box {
+        background-color: rgb(255, 255, 255);
+        height: 50px;
+        width: 100%;
+        
+
+
+
+
+    }
+
+    .nav {
+        background-color: rgb(255, 255, 255);
+        margin: 0 auto;
+        width: 1190px;
+        height: 50px;
+
+    }
+
+    .nav .logo {
+
+        margin: -10px 0;
+        /* 浮动 */
+        float: left;
+    }
+
+
+    .nav nav ul li {
+
+        float: right;
+        position: relative;
+
+    }
+
+    /*设置显示的背景色的样式和动画*/
+    .btnbg-x {
+        position: absolute;
+        left: 50%;
+        width: 50%;
+        top: 0px;
+        bottom: 0px;
+        transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+
+
+    }
+
+    /*设置当鼠标滑过或者是悬停在导航项上时的hover样式效果*/
+    .nav a:hover .btnbg-x {
+        width: 100%;
+        left: 0;
+
+
+
+
+    }
+
+    .nav a {
+        /* 变成行内块元素 */
+        display: inline-block;
+        height: 50px;
+        /* 垂直居中 */
+        line-height: 50px;
+        background-color: rgb(255, 254, 251);
+        /*设置相对定位是为了设置a的显示层级，否则会被hover时的背景色遮住*/
+        position: relative;
+        z-index: 2;
+
+        /* 间距10px */
+        /* margin-right: 10px; */
+
+
+        transition: all 0.5s;
+        padding: 0 20px;
+    }
+
+    .nav a:hover {
+        background-color: rgb(255, 255, 255);
+        border-bottom: rebeccapurple 1px solid;
+        border-top: rebeccapurple 1px solid;
+    }
+
+
+    /* bannar-box条部分 */
+
+
+    .bannar-box {
+
+        width: 100%;
+        height: 600px;
+        /* 溢出隐藏 */
+        overflow: hidden;
+
+        /* 相对定位 */
+        position: relative;
+    }
+    .bannar-box li img {
+        /* 隐藏图片 */
+        display: none;
+        width: 100%;
+        height: 600px;
+    }
+
+    .bannar-box li .current {
+
+        /* 显示 */
+        display: block;
+    }
+
+    /* dots小圆点 */
+    .bannar-box .dots {
+        position: absolute;
+
+        width: 100px;
+        /* 距离底部50像素 */
+        bottom: 60px;
+        left: 50%;
+        margin-left: -50px;
+    }
+
+    .bannar-box .dots>span {
+
+
+        /* 变成行内块元素 */
+        display: inline-block;
+        height: 11px;
+        width: 10px;
+        background-color: blueviolet;
+
+        /* 圆角 */
+        border-radius: 10px;
+
+        /* 鼠标移动变成手; */
+        cursor: pointer;
+
+
+        /* 锁定大小，以后设置其他高度大小都不会影响到这里 */
+        box-sizing: border-box;
+    }
+
+    /* :last-child最后一个子元素 */
+    .bannar-box .dots>span:not(:last-child) {
+
+        /* 右边拉开5个像素  */
+        margin-right: 5px;
+
+    }
+
+    .bannar-box .dots .square {
+
+        background-color: rgb(51, 153, 201);
+    }
+
+
+
+
+
+
+
+
+
+
+
+    /* 搜素框searchbox */
+    .searchbox {
+        height: 70px;
+        width: 900px;
+        background-color: rgb(255, 255, 255);
+        /* 向上走 */
+
+
+        margin: -30px auto;
+        /* 相对定位 */
+        position: relative;
+        /* 盒子阴影前两个是位置，第三个是数值  第四个模糊程度*/
+        box-shadow: 0 0 2px 0 #ccc;
+
+        /* 圆角 */
+        border-radius: 15px;
+
+    }
+
+    /* 输入文字的搜索框 */
+    .searchbox form input {
+        height: 69px;
+        width: 850px;
+        float: left;
+
+        /* 里面的inpu的记得也要圆角 */
+        border-radius: 15px;
+        /* 左缩进，使得文本内的文字不靠近边框 */
+        text-indent: 30px;
+    }
+
+    /* 搜索按钮 */
+    /* type="submit[]浏览器自动查找到这个元素 */
+    .searchbox form input[type="submit"] {
+        width: 50px;
+        height: 69px;
+        float: right;
+        /* 缩进取消 */
+        text-indent: 0;
+        /* no-repeat不平铺，center居中 */
+        /* background: url(images/xgr2.png) no-repeat center; */
+
+        /* 强制改变图片大小，针对上面的 */
+        background-size: 90px;
+    }
+
+
+
+
+
+
+
+
+
+
+    /* 美景美图 */
+    .oddsbox {
+        width: 1190px;
+        /* 上下间距都是30 */
+        margin: 30px auto;
+        background-color: #fff;
+    }
+
+    /*标题  */
+    .oddsbox .title p,
+    .wangtgobox .title p {
+
+
+        height: 40px;
+        width: 100px;
+        background-color: rgb(10, 33, 136);
+        color: #00848a;
+        /* 文字居中 */
+        text-align: center;
+        /* 垂直居中 */
+        line-height: 40px;
+        border-radius: 20px;
+
+
+        /* 这个必须要加浮动，下面的才可以和他一个级别浮动上来 */
+        float: left;
+    }
+
+
+
+
+    .oddsbox .title span,
+    .wangtgobox .title span {
+        /* 由于span本身是行内元素，把他转换成行内块元素后就要给他一个浮动才能显示在同一行 */
+        display: inline-block;
+        float: left;
+        color: #000000;
+        /* 内边距，向左拉开50像素 */
+        padding-left: 50px;
+        height: 40px;
+
+        /* 文字居中 */
+        text-align: center;
+        /* 垂直居中 */
+        line-height: 40px;
+        font-size: 22px;
+    }
+
+
+    .oddsbox .title i {
+        /* 上下不变，左右离开5个像素 */
+        padding: 0 5px;
+    }
+
+
+
+
+
+
+
+
+    /* 导航与图文简介 */
+    .content {
+        /* 清除浮动 ,让文字下来*/
+        clear: left;
+        /* margin没反应，直接给填充 */
+        padding: 30px;
+        height: 700px;
+        margin: 0 0 70px 0;
+    }
+
+    /* 导航 */
+    .content .list .list-nav {
+        position: relative;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        border: #083133 1px solid;
+        border-radius: 10px;
+        display: inline-block;
+        margin-right: 110px;
+        padding: 0 50px;
+        background-color: #ffffff;
+        
+        /* 水平，垂直，阴影距离  模糊程度 */
+        box-shadow: 0 0 5px 0 rgb(0, 0, 0);
+
+        /* 固定 */
+        box-sizing: border-box;
+    }
+
+    /* 选择最后一个元素 */
+    .content .list .list-nav:last-child {
+        margin-right: 0px;
+    }
+
+    .content .list .current-option {
+        background-color: #24a6da;
+    }
+
+
+    /* 图文介绍 */
+    .productinfo {
+        width: 100%;
+        margin: 30px 0;
+    }
+
+
+    .productbox {
+        width: 100%;
+        height: 200px;
+
+        /* 清除浮动 ，让排版黏在一起的图片分开，当重要要有盒子高度*/
+        clear: both;
+
+
+        /* 隐藏内容 */
+        display: none;
+    }
+
+    
+    .on {
+        /* 显示内容 */
+        display: block;
+    }
+
+    .infobox {
+        float: left;
+        margin: 5px 5px ;
+        width: 350px;
+        height: 500px;
+        position: relative;
+
+
+    }
+    /* 先一步显示底图 */
+    .infobox:before{
+        content: "";
+		    width: 0;
+		    height: 170px;
+		    background: #000;
+		    padding: 14px 18px;
+		    position: absolute;
+		    top: 0;
+		    left: 50%;
+            /* 不透明度 */
+		    opacity: 0;
+            border-radius: 20px;
+		    transition: all 500ms cubic-bezier(0.47, 0, 0.745, 0.715) 0s;
+
+    }
+    .infobox:hover:before{
+		    width: 90%;
+            height: 170px;
+		    left: 0;
+		    opacity: 0.5;
+    } 
+
+
+    /* 底图上的文字 */
+    .infobox .post{
+        font-size: 25px;
+
+        color: #ffffff;
+
+        
+		    margin:-130px 0 0 150px;
+		    
+		
+		    opacity: 0;
+            /* 图片过渡 */
+		    transition: all 0.5s ease 0s;
+            position: absolute;
+            
+		}
+        .infobox:hover .post{
+		    opacity: 1;
+		    transition-delay: 0.7s;
+            position: absolute;
+		}
+
+
+
+    .liaojie{
+
+        height: 20px;
+        width: 80px;
+        border-radius: 20px;
+        background-color: #59a1d1;
+        
+
+
+
+    }
+    /* .infobox img:hover{ */
+        
+         /* 单鼠标移动到图片时的过渡动画效果 */
+         /* transition: all .5s ; */
+
+/* 鼠标移动到图片时的图片缩放大小，数值越大图片越大 */
+/* transform: scale(1.1, 1.1)
+    } */
+
+    /* 强制改变图片大小 */
+    .infobox p img {
+        width: 350px;
+        height: 200px;
+        border-radius: 20px;
+        box-shadow: #6ca7be 0 0 3px 0;
+    }
+
+    .infobox span {
+        font-size: 20px;
+        color: #00848a;
+
+    }
+
+    .infobox ul li p {
+        font-size: 20px;
+        color: #083133;
+        float: left;
+
+
+    }
+
+    .infobox .title {
+        margin: 10px 0;
+    }
+
+
+
+    /* 大屏文字介绍 */
+    .jiesao-1 {
+
+        height: 600px;
+        width: 100%;
+        background-color: rgb(192, 207, 241);
+        margin-top: 60px;
+        border-radius: 10px;
+
+    }
+
+    .jiesao-1 h1 {
+
+        font-size: 10em;
+        /* 字体 */
+        font-family: 'Dorsa-Regular';
+
+        /* 间距 */
+        letter-spacing: 2px;
+        color: #ffffff;
+        margin-top: 20px;
+    }
+
+    .jiesao-1 p {
+        font-size: 3em;
+        letter-spacing: 5px;
+        color: rgb(255, 255, 255);
+    }
+
+    .jiesao-1 a {
+        font-size: 3em;
+        letter-spacing: 5px;
+        color: rgb(22, 61, 80);
+    }
+
+    .jiesao-1 img {
+        margin: 20px 90px;
+        float: right;
+        border-radius: 30px;
+    }
+
+
+    /* 湛江习俗 */
+    .jiesao-xishu {
+
+        height: 600px;
+        width: 100%;
+        background-color: rgb(201, 214, 243);
+        border-radius: 10px;
+        display: none;
+
+    }
+
+    /* 显示 */
+
+    .jiesao-xs {
+        display: block;
+    }
+
+    .jiesao-xishu h1 {
+        font-size: 60px;
+        /* 字体 */
+        text-align: center;
+
+        /* 间距 */
+        letter-spacing: 2px;
+        color: #ffffff;
+        margin: 10px;
+        border-radius: 10px;
+
+    }
+
+    .jiesao-xishu p {
+        text-align: center;
+        letter-spacing: 2px;
+        color: rgb(255, 255, 255);
+        font-size: 20px;
+
+
+    }
+
+    .jiesao-xishu img {
+        height: 300px;
+        width: 200px;
+        border-radius: 10px;
+
+
+
+    }
+    /* 鼠标移动小图显示大图 */
+    /* 把小图移动入大图内部 */
+    /* .tu{
+        position: relative;
+    }
+
+    .xiaotu{
+        position: absolute;
+        margin:-140px 0 -0 322px ;
+    } */
+
+    /* 留言板 */
+
+   
+
+
+    /* 底部的广告框 */
+    .footer {
+        height: 340px;
+        background-color: #3d3d42;
+        position: relative;
+    }
+
+    .dibu11 {
+        position: relative;
+    }
+
+    .dibu {
+
+        height: 60px;
+        background-color: #2f373f;
+        position: relative;
+        bottom: -170px;
+
+    }
+
+    /* 底部文字 */
+    .dibuwenzi {
+        color: #ffffff;
+        position: absolute;
+        margin: 20px 10px 20px 461px;
+    }
+
+    .p1 {
+        color: #ffffff;
+        margin: 20px 20px 20px 259px;
+    }
+
+    .p2 {
+        color: white;
+        float: left;
+        margin: 15px 20px 20px 259px;
+    }
+
+    .p2-1 {
+        color: #ffffff;
+        margin: 15px 0px 20px 0px;
+        float: left;
+        font-size: 13px;
+        margin: 20px 0;
+        margin-left: 15px;
+    }
+    .gg{
+        /* 浏览器窗口布局 */
+        position: fixed;
+        top: 100px;
+        left: 10px;
+        width: 300px;
+        height: 400px;
+        border-radius: 20px;
+        background-color: #ffffff46;
+    }
+    /* 温馨提示 */
+    .ggtoubu p{
+       text-align: center;
+        color: #27cce9;
+        font-size: 30px;
+       height: 35px;
+       line-height: 35px;
+       width: 100%;
+       cursor: pointer;/*鼠标变成手指样式*/
+
+    }
+    /* 小xxx */
+    .gangaoimg{
+        font-size: 30px;
+    }
+    /* 疫情提示 */
+    .ggneiron p{
+        color: #186a8a;
+        font-size: 25px;
+
+        width: 100%;
+        cursor: pointer;/*鼠标变成手指样式*/
+       
+        text-align: center;
+    }
+    .ggneiron :hover{
+        background-color: #6ca7be;
+        transition: all .5s ;
+        border-radius: 20px;
+        transform: scale(1.1);/*鼠标放上之后元素变成1.4倍大小*/
+    }
+
+    /* 景区动态 */
+    
+    .xinwen p{
+        text-align: center;
+         color: #27cce9;
+         font-size: 30px;
+        height: 35px;
+        line-height: 35px;
+        width: 100%;
+        cursor: pointer;/*鼠标变成手指样式*/
+ 
+     }
+     /* 景区动态的内容 */
+     .dontai p{
+         color: #186a8a;
+         font-size: 25px;
+ 
+         width: 100%;
+        
+         cursor: pointer;/*鼠标变成手指样式*/
+         text-align: center;
+     }
+
+
+.dontai :hover{
+    background-color: #6ca7be;
+    transition: all .5s ;
+    border-radius: 20px;
+    transform: scale(1.1);/*鼠标放上之后元素变成1.4倍大小*/
+}
+
+.jiesao img:hover{
+    /* 动画过渡效果 */
+    transition:all 2s;
+
+    /* 指定在y轴围绕 */
+    transform: rotateY(160deg);
+}
+
+.jiesao img{
+    /* 动画过渡效果 */
+    transition:all 2s;
+
+ 
+}

@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>湛江景区介绍</title>
+<style>
+  @charset "UTF-8";
+/* Body */
+body {
+	
+	background-color: #f2f2f2;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	font-style: normal;
+	font-weight: 200;
+}
+
+.home-1{
+  
+  color: #31A8DD;
+  height: 60px;
+  background-color: #1f4758;
+  border-radius: 10px;
+}
+.home a{
+  text-decoration:none;
+  color: #f2f2f2;
+  font-size: 20px;
+  line-height: 60px;
+  float:right;
+  margin-right: 30px;
+
+}
+/* Container */
+.container {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	height: 1000px;
+	background-color: #FFFFFF;
+}
+.hero_header {
+	color: #FFFFFF;
+	text-align: center;
+  font-size: 150px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	letter-spacing: 4px;
+}
+/* 横幅 */
+.hero {
+  background: url(images/湛江18.jpg);
+	/* background-color: #B3B3B3; */
+	padding-top: 150px;
+  /* 距离底部永远50px */
+	padding-bottom: 50px;
+}
+.tagline {
+	text-align: center;
+	color: #FFFFFF;
+	margin-top: 4px;
+	font-weight: lighter;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+/* About Section */
+.text_column {
+	width: 29%;
+	text-align: justify;
+	font-weight: lighter;
+	line-height: 25px;
+	float: left;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: #A3A3A3;
+}
+.about {
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-top: 35px;
+	display: inline-block;
+	background-color: #FFFFFF;
+	margin-top: 0px;
+}
+
+/*底部大标题文字*/
+.parallax{
+	
+	text-align: right;
+	padding-right: 900px;
+	padding-top: 180px;
+	font-size:70px;
+/*	间距*/
+	letter-spacing: 2px;
+	margin-top: 0px;
+	background-color: #53798a;
+  border-radius: 20px;
+
+}
+/*隐藏*/
+.hidden {
+	display: none;
+}
+
+/*	广州下面的间距*/
+.tagline {
+	margin-top: 20px;
+	line-height: 22px;
+}
+
+
+
+
+
+/* 习俗 */
+.jiesao-xishu{
+
+height: 600px;
+width: 100%;
+background-color:  rgb(255, 255, 255);
+border-radius: 10px;
+
+
+}
+
+
+.jiesao-xishu h1{
+font-size: 60px;
+/* 字体 */
+text-align: center;
+
+/* 间距 */
+letter-spacing: 2px;
+color: #222627;
+margin: 10px;
+border-radius: 10px;
+
+}
+.jiesao-xishu p{
+text-align: center;
+letter-spacing: 2px;
+color: rgb(22, 61, 80);
+
+
+}
+.jiesao-xishu img{
+height: 300px; 
+width: 200px;
+border-radius: 10px;
+
+
+
+}
+ul {
+        list-style: none;
+    }
+
+    a {
+        /* 去除下划线
+         */
+        text-decoration: none;
+        color: #00848a;
+        font-size: 20px;
+    }
+
+/* 导航目录 */
+.daohan{
+  border: #00848a 1px solid;
+ background-color: #4a3f5a;
+ border-radius: 20px;
+ position: relative;
+}
+.daohan-muluwenz{
+  height: 40px;
+        line-height: 40px;
+        /* 文字居中 */
+        text-align: center;
+        border: #083133 1px solid;
+        border-radius: 10px;
+        margin: 5px 0;
+        width: 90px;
+        padding: 0 10px;
+        background-color: #ffffff;
+        /* 水平，垂直，阴影距离  模糊程度 */
+        box-shadow: 0 0 5px 0 rgb(0, 0, 0);
+        
+
+        /* 固定 */
+        box-sizing: border-box;
+}
+
+.daohan-wenz{
+  background-color: #5d426d;
+}
+
+
+
+
+/* 导航栏 */
+.daohan-jingdian{
+  display: none;
+  margin: 10px;
+  color: #4b3b55;
+}
+.daohan-jingdian a{
+background-color: #654574;
+border-radius: 20px;
+color: #FFFFFF;
+font-size: 20px;
+}
+.on{
+  display: block;
+}
+
+.jieshao{
+  position: absolute;
+  background-color: #966497;
+  float: right;
+  width: 1100px;
+  position: relative;
+  height: 220px;
+  margin:-220px 75px 0 0;
+  border-radius: 20px;
+  
+}
+</style>
+
+<script>
+  window.onload = function (){
+  // tab切换
+ //  这个是你想要定位到哪的地方的class
+  var aList = document.getElementsByClassName("daohan-muluwenz"),
+ //  第二个存放有效果的样式
+           aTab = document.getElementsByClassName("daohan-jingdian"),
+           // 这个记录上次高亮的地方
+           cityIndex = 0;
+
+       // 遍历全部列表
+       for (var a = 0; a < aList.length; a++) {
+           // 闭包加函数执行
+           (
+               function (a) {
+                   // 给每一个li列表添加事件
+                   aList[a].onclick = function () {
+                       aList[cityIndex].classList.remove("daohan-wenz");
+                       aTab[cityIndex].classList.remove("on");
+                       cityIndex = a;
+                       aList[a].classList.add("daohan-wenz");
+                       aTab[a].classList.add("on");
+                   }
+               })(a)
+
+       }}
+</script>
+</head>
+<body> 
+  <div class="home-1"><ul class="home">
+    <a href="index.html">回到主页</a>
+  
+  </ul>
+
+
+  </div>
+<div class="container"> 
+ 
+  
+  
+  <section class="hero" id="hero" >
+	  
+    <h2 class="hero_header">湛江</h2>
+    <p class="tagline">湛江好玩的地方有哪些？</p>
+	  <div class="daohan">
+      <ul class="daohan-mulu">
+        <li  class="daohan-muluwenz daohan-wenz">广州</li>
+        <li  class="daohan-muluwenz">湛江</li>
+        <li  class="daohan-muluwenz">大理</li>
+        <li  class="daohan-muluwenz">杭州</li>
+        <li  class="daohan-muluwenz">青岛</li>
+
+        
+  
+  <div class="jieshao">
+      
+    <div class="daohan-jingdian  on">
+      <h2>广州好玩点</h2>
+      <img src="images/广州1.jpg" alt="" width="150" height="100">
+      <img src="images/广州2.jpg" alt="" width="150" height="100">
+      <img src="images/广州3.jpg" alt="" width="150" height="100">
+      <img src="images/广州4.jpg" alt="" width="150" height="100">
+      <img src="images/广州5.jpg" alt="" width="150" height="100">
+      <img src="images/广州6.jpg" alt="" width="150" height="100">
+      <a href="广州景区介绍.html">点我跳到广州</a>
+
+    </div>
+    
+    <div class="daohan-jingdian">
+      <h2>湛江好玩点</h2>
+      <img src="images/湛江1.jpg" alt="" width="150" height="100">
+      <img src="images/湛江2.jpg" alt="" width="150" height="100">
+      <img src="images/湛江3.jpg" alt="" width="150" height="100">
+      <img src="images/湛江4.jpg" alt="" width="150" height="100">
+      <img src="images/湛江5.jpg" alt="" width="150" height="100">
+      <img src="images/湛江6.jpg" alt="" width="150" height="100">
+      <a href="湛江景区介绍.html">点我跳到湛江</a>
+    </div>
+    
+    <div class="daohan-jingdian">
+      <h2>大理好玩点</h2>
+      <img src="images/大理1.jpg" alt="" width="150" height="100">
+      <img src="images/大理2.jpg" alt="" width="150" height="100">
+      <img src="images/大理3.jpg" alt="" width="150" height="100">
+      <img src="images/大理4.jpg" alt="" width="150" height="100">
+      <img src="images/大理5.jpg" alt="" width="150" height="100">
+      <img src="images/大理6.jpg" alt="" width="150" height="100">
+      <a href="大理景区介绍.html">点我跳到大理</a>
+    </div>
+    
+    <div class="daohan-jingdian">
+      <h2>杭州好玩点</h2>
+      <img src="images/杭州1.jpg" alt="" width="150" height="100">
+      <img src="images/杭州2.jpg" alt="" width="150" height="100">
+      <img src="images/杭州3.jpg" alt="" width="150" height="100">
+      <img src="images/杭州4.jpg" alt="" width="150" height="100">
+      <img src="images/杭州5.jpg" alt="" width="150" height="100">
+      <img src="images/杭州6.jpg" alt="" width="150" height="100">
+      <a href="杭州景区介绍.html">点我跳到杭州</a>
+    </div>
+    
+    <div class="daohan-jingdian">
+      <h2>青岛好玩点</h2>
+      <img src="images/青岛1.jpg" alt="" width="150" height="100">
+      <img src="images/青岛2.jpg" alt="" width="150" height="100">
+      <img src="images/青岛3.jpg" alt="" width="150" height="100">
+      <img src="images/青岛4.jpg" alt="" width="150" height="100">
+      <img src="images/青岛5.jpg" alt="" width="150" height="100">
+      <img src="images/青岛6.jpg" alt="" width="150" height="100">
+      <a href="青岛景区介绍.html">点我跳到青岛</a>
+    </div>
+  </div>
+	  
+  </section>
+  <!-- 景区介绍 -->
+  <section class="about" id="about">
+    <h2 class="hidden">About</h2>
+    <h1>湛江必打卡项目——湖光岩&nbsp;</h1>
+    <p class="text_column">湖光岩风景区位于中国大陆最南端湛江西南郊，2006年9月被联合国教科文组织批准为世界地质公园，是雷州半岛上山清水秀，风景奇特的游览胜地。 </p>
+    <p class="text_column">景区由火山口湖与火山熔岩组成，湖光岩大约形成于20万年前，是我国现存的三座火山湖之一，也是世界上除德国的Manderscheid之外仅存的玛珥湖，具有天然的自我净化功能，无论旱涝都永远不会干涸。
+        奇特的是，在这座生态环境良好纯净的湖内没有任何青蛙和蛇等常见水生动物，落叶无影无踪，相传湖中还有曾救助过溺水者的龙鱼和神龟，并且湖内气温常比湖外低了3度，为这座火山湖更添一分神秘气息。 </p>
+    <p class="text_column">1-3小时
+        交通
+        乘坐9路公交车至湖光岩东门站下车即可
+        门票
+        门票:50元
+        开放时间
+        07:30-18:00 (1月1日-12月31日 周一-周日)</p>
+    <img src="images/湛江6.jpg" alt="" width="300px" height="200px" style="margin:213px 0 0 -1236px;">
+  </section>
+  <hr>
+	
+  <section class="about" >
+    <h2 class="hidden">About</h2>
+    <h1>湛江必打卡项目——&nbsp;特程岛</h1>
+    <p class="text_column">“特呈”是古越语，“特”即地方，“呈”是和谐吉祥的意思。岛上村民，世代以捕鱼为生。
+        特呈岛空气清新，气候四季如春，有1000多亩树龄近500年的国家重点保护红树林、400多年历史的冼太庙、抗日革命旧址，还有白沙滩、红怪石（火山石，有较高科研、欣赏价值）。 </p>
+    <p class="text_column">
+        特呈岛地处热带和亚热带气候，终年平均气温在21—22度之间，四季如春；空气质量优良，海水水质清澈见底，岛上有近百棵参天古榕和断续分布的热带灌丛，沙滩3公里，且沿岸有近千亩受国家保护的天然红树林。</p>
+    <p class="text_column">3小时以上
+        交通
+        列车路线：
+        1、湛江火车南站：乘坐30路公交车至避风港站下车，再步行到霞山渔人码头或在海滨公园站下车，步行到霞山海滨码头。
+        2、湛江西客站：乘坐65K到海滨公园北门站下车，再步行到霞山海滨码头或霞山渔人码头。
+        省际巴士路线：
+        1、湛江霞山汽车南站：乘坐30路公交车，到避风塘下车，再步行到霞山渔人码头或在海滨公园站下车，步行到霞山海滨码头。
+        2、湛江海田车站：乘坐44路公交车，在霞山分站下车，再步行到霞山渔人码头或霞山海滨码头。
+        航班路线：在湛江机场附近挖尾村站乘坐10路公交车，在霞山分站下车，再步行到霞山渔人码头或霞山海滨码头。
+        *以上信息仅供参考，具体请以实际情况为准。 </p>
+    <img src="images/湛江11.jpg" alt="" width="300px" height="200px"  style="margin:213px 0 0 -1236px;">
+  </section>
+  <hr>
+	 <section class="about" >
+    <h2 class="hidden">About</h2>
+    <h1>湛江必打卡项目——硇洲岛旅游区&nbsp;</h1>
+    <p class="text_column">硇洲岛是一个约20-50万年前由海底火山爆发而形成的海岛，也是中国第一大火山岛。
+        岛上有南国著名的旅游度假胜地——那晏海石滩，有十分理想的天然海浴场，有与伦敦、好望角灯塔齐名的世界著名三大灯塔之一—硇洲灯塔。还有众多名胜古迹，如宋皇城遗址、祥龙书院、八角井、宋皇碑、宋皇亭等</p>
+    <p class="text_column">硇州岛物产丰富，是南海大陆架的一个肥沃渔场，盛产名闻世界的硇洲鲍鱼、龙虾等名贵水产。
+        繁荣的渔港是也硇洲岛的—大景观。成百成千的渔船云集在码头附近的海面上。夜晚千灯竞辉，渔歌阵阵，仿佛是一座由船只连成的“海中之城”。来岛上玩的话，一定不要错过这个热闹的景象。。 </p>
+    <p class="text_column">门票
+        免费
+        开放时间
+        全天 (1月1日-12月31日 周一-周日)</p>
+    <img src="images/湛江19.jpg" alt="" width="300px" height="200px" style="margin:213px 0 0 -1236px;">
+  </section>
+  
+            <!--湛江 习俗 -->
+            <div class="jiesao-xishu jiesao-xs" title="1">
+
+              <h1>湛江习俗</h1><br>
+              <p>湛江的习俗有很多，人龙舞，飘色，汤鸡拜神，可谓是热闹非凡...</p>
+              <img src="images/湛江12.jpg" alt="飘色">
+              <img src="images/湛江13.jpg" alt="人龙舞">
+              <img src="images/湛江14.jpg" alt="飘色">
+              <img src="images/湛江15.jpg" alt="飘色">
+              <img src="images/湛江16.jpg" alt="飘色">
+          
+
+              <p>人龙舞堪称雷州半岛的传统舞蹈之魂，其节奏鲜明，鼓点强劲，气势雄伟，催人奋进。传说龙能行云布雨、消灾降福，象征祥瑞，所以以舞龙的方式来祈求平安和丰收就成为全国各地的一种习俗。雷州半岛现有东海岛人龙舞和沈塘人龙舞。沈塘人龙舞（原始型）源于明朝嘉靖年间（1523年），沈塘村民为庆祝当地官宦陈仕恺新建沈塘圩而始创人龙（陈仕恺公乃进士出身，富甲雷阳，御诏赴安徽省灵壁县任丞署知县，秋满）。 该舞蹈已被录入《中国民族民间舞蹈集成》(广东卷)，正在积极申报扩展为广东省非物质文化遗产保护项目。 在庆祝活动上，村民们表演了原汁原味和经过包装两种不同风格，精彩独特的人龙舞等民俗表演，受到专家和乡亲们的欢迎。人龙舞增添了节日气氛，也表达了劳动人民对美好生活的祈求。</p>
+
+
+
+          </div>
+ 
+<hr>
+  <section class="banner">
+    <h2 class="parallax">湛江欢迎你&nbsp;
+
+
+
+
+    </h2>
+
+
+   
+  </section>
+
+ </div>
+</body>
+</html>

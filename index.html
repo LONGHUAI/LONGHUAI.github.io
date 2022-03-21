@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>景区介绍</title>
+</head>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script>
+
+
+
+
+    window.onload = function () {
+        // tab切换
+        // alist与aTab自己定义，元素内的名字编写上自己的类名
+        var aList = document.getElementsByClassName("list-nav"),
+            aTab = document.getElementsByClassName("productbox"),
+            // 这个记录上次高亮的地方
+            cityIndex = 0;
+
+        // 遍历全部列表
+        for (var a = 0; a < aList.length; a++) {
+            // 闭包加函数执行
+            (
+                function (a) {
+                    // 给每一个li列表添加事件
+                    aList[a].onclick = function () {
+                        // alist与aTab自己定义，元素内的名字编写上自己的类名
+                        aList[cityIndex].classList.remove("current-option");
+                        aTab[cityIndex].classList.remove("on");
+                        cityIndex = a;
+                        aList[a].classList.add("current-option");
+                        aTab[a].classList.add("on");
+                    }
+                })(a)
+
+        }
+
+
+
+
+
+
+        // 数组
+        var imgs = document.querySelectorAll(".img");
+        var dots = document.querySelector(".dots").querySelectorAll("span");
+        // 给img图片设置data-index属性,好判断当前图片是哪一张
+        for (var i = 0; i < imgs.length; i++) {
+            imgs[i].setAttribute("data-index", i);
+        }
+        // 获取当前图片和图片的inde(数组下标)
+        var currentImg = document.querySelector(".current");
+        var currentIndex = currentImg.getAttribute("data-index");
+
+
+        // 给所有小圆点绑定事件
+        for (var k = 0; k < dots.length; k++) {
+
+            // 给所有小圆点设置属性
+            dots[k].setAttribute("data-index", k);
+            dots[k].addEventListener("click", function () {
+                // 获取当前小圆点索引
+                var index = this.getAttribute("data-index");
+                // 如果当前点击的小圆点index索引与之前索引不一致则切换图片，否则不动
+                if (index != currentIndex) {
+                    // 将鼠标点击之前的图片隐藏，把之前img的current类删除
+                    imgs[currentIndex].classList.remove("current");
+                    // 将之前高亮的圆点取消显示
+                    dots[currentIndex].classList.remove("square");
+                    // 将当前图片显示
+                    imgs[index].classList.add("current");
+                    // 将当前圆点高亮
+                    dots[index].classList.add("square");
+                    // 改变currentindex值，让与index相等
+                    currentIndex = index;
+
+
+                }
+            })
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        // 与小点切换图片有冲突，舍弃
+
+
+        // // 图片自动轮播changeImg图片每2秒执行一次
+
+
+        // var index = 0;
+        // //改变图片
+        // function ChangeImg() {
+        //     index++;
+        //     var a = document.getElementsByClassName("img");
+        //     if (index >= a.length) index = 0;
+        //     for (var i = 0; i < a.length; i++) {
+        //         a[i].style.display = 'none';
+        //     }
+        //     a[index].style.display = 'block';
+        // }
+        // //设置定时器，每隔5秒切换一张图片
+        // setInterval(ChangeImg, 2000);
+
+
+
+
+
+
+        // 轮播图
+        var index = 0;
+        //改变图片
+        function xishu() {
+            // 自加
+            index++;
+            // 绑定class名为jiesao-xishu的类
+            // a是自己起的名字
+            var a = document.getElementsByClassName("jiesao-xishu");
+            // if语句，index是否大于a.length
+            if (index >= a.length) index = 0;
+            // i=0,i<a.length时候就自身加一
+            // a是自己起的名字
+            //意思是index++ 一直在增加 a.length比较 ，如果为真，后面的 index就等于0， 相当于归0 从头开始播放
+            for (var i = 0; i < a.length; i++) {
+                // i的时候就隐藏
+                a[i].style.display = 'none';
+            }
+            // index的时候就显示
+            a[index].style.display = 'block';
+        }
+        //设置定时器，每隔3秒切换一张图片
+        setInterval(xishu, 3000);
+
+    }
+
+
+    // 页面欢迎
+    $(document).ready(function () {
+        alert("欢迎你参观我的景区介绍网站!");
+        var ogao = document.getElementById("gao");
+        ogao.onclick = function () {
+            document.getElementById("gao1").style.display = "none";
+        }
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+    // 鼠标点击显示大图
+
+    function changeTu(tusrc) {
+        document.getElementById("tu").src = tusrc;
+    }
+
+
+    // 鼠标移动到显示超大图
+
+    $(function () {
+        var x = 10;
+        var y = 20;
+        $("a.tooltip").mouseover(function (e) {
+            this.myTitle = this.title;
+            this.title = "";
+            var imgTitle = this.myTitle ? "<br/>" + this.myTitle : "";
+            //创建一个div 元素
+            var tooltip = "<div id='tooltip'><img src='" + this.href + "' alt=''/>" + imgTitle + "<\/div>";
+            //把它追加到文档中
+            $("body").append(tooltip);
+            $("#tooltip")
+                .css({
+                    "top": (e.pageY + y) + "px",
+                    "left": (e.pageX + x) + "px"
+
+                })
+                //设置x坐标和y坐标，并且显示
+                .show("fast");
+        }).mouseout(function () {
+            this.title = this.myTitle;
+            $("#tooltip").remove();	 //移除 
+        })
+    })
+
+
+
+
+
+
+</script>
+<link rel="stylesheet" href="css/jingqu.css">
+
+<body>
+    <!-- nav导航 -->
+    <div class="nav-box">
+        <div class="nav">
+            <div class="logo">
+                <img src="images/xgr2.png" alt="" height="50px">
+            </div>
+
+
+
+
+
+
+            <nav>
+                <ul>
+                    <li><a href="广州景区介绍.html" target="_blank">广州</a>
+                        <div class="btnbg-x"></div>
+                     
+                    </li>
+                    <li> <a href="湛江景区介绍.html" target="_blank">湛江</a>
+                        <div class="btnbg-x"></div>
+                    </li>
+                    <li> <a href="杭州景区介绍.html" target="_blank">杭州</a>
+                        <div class="btnbg-x"></div>
+                    </li>
+                    <li> <a href="大理景区介绍.html" target="_blank">大理</a>
+                        <div class="btnbg-x"></div>
+                    </li>
+                    <li><a href="青岛景区介绍.html" target="_blank">青岛</a>
+                        <div class="btnbg-x"></div>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+    <!-- banner -->
+    <div class="bannar-box">
+        <ul>
+            <li><img src="images/广州1.jpg" class="img current" alt="1"></li>
+            <li><img src="images/大理2.jpg" class="img" alt="2"></li>
+            <li><img src="images/青岛3.jpg" class="img" alt="3"></li>
+            <li><img src="images/杭州4.jpg" class="img" alt="4"></li>
+            <li><img src="images/湛江13.jpg" class="img" alt="5"></li>
+        </ul>
+
+        <!-- 小圆点 -->
+        <div class="dots">
+
+            <span class="square"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+    <!-- 搜索栏 -->
+
+    <div class="searchbox">
+
+        <form action=""><input type="text" placeholder="请输入内容搜索">
+            <!-- 提交按钮 -->
+            <input type="submit" value="搜索">
+        </form>
+    </div>
+
+
+    <!-- 美景美图 -->
+    <div class="oddsbox">
+        <!-- 标题 -->
+        <div class="title">
+            <p>经典手办</p>
+            <span>
+                价低
+                <i>超</i>
+                低
+            </span>
+
+        </div>
+
+
+
+
+        <!-- 导航与图文区 -->
+
+        <div class="content">
+
+
+            <!-- 导航栏文字 -->
+
+
+            <ul class="list">
+                <li class="list-nav    current-option">广州<div class="btnbg-x"></div>
+                </li>
+                <li class="list-nav">杭州 <div class="btnbg-x"></div>
+                </li>
+                <li class="list-nav">青岛 <div class="btnbg-x"></div>
+                </li>
+                <li class="list-nav">湛江 <div class="btnbg-x"></div>
+                </li>
+                <li class="list-nav">大理 <div class="btnbg-x"></div>
+                </li>
+            </ul>
+
+
+
+            <!-- 内容信息 -->
+            <div class="productinfo">
+
+                <!-- 广州 -->
+                <div class="productbox  on">
+                    <div class="infobox">
+                        <p><img src="images/广州1.jpg" alt="">
+                        <h1 class="post">广州</h1>
+                        </p>
+                        <span>小蛮腰</span>
+                        <p class="title">
+                            小蛮腰也叫广州塔，广州塔最高的地方：488摄影观光平台，来到这里，就到达了广州塔的巅峰。488摄影观景平台是目前世界上最高的户外观景平台，2013年6月荣获吉尼斯世界纪录。
+
+                        </p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="广州景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/广州2.jpg" alt="">
+                        <h1 class="post">广州</h1>
+                        </p>
+                        <span>珠江夜景</span>
+                        <p class="title"> 来到广州，一定要感受这个城市的夜生活，璀璨的灯火，见证这个城市的繁华</p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="广州景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+
+                    <div class="infobox">
+                        <p><img src="images/广州3.jpg" alt="">
+                        <h1 class="post">广州</h1>
+                        </p>
+                        <span>珠江夜景</span>
+                        <p class="title"> 来到广州，一定要感受这个城市的夜生活，璀璨的灯火，见证这个城市的繁华</p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="广州景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/广州4.jpg" alt="">
+                        <h1 class="post">广州</h1>
+                        </p>
+                        <span>广州塔夜景</span>
+                        <p class="title">
+                            小蛮腰也叫广州塔，广州塔最高的地方：488摄影观光平台，来到这里，就到达了广州塔的巅峰。488摄影观景平台是目前世界上最高的户外观景平台，2013年6月荣获吉尼斯世界纪录。</p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="广州景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/广州5.jpg" alt="">
+                        <h1 class="post">广州</h1>
+                        </p>
+                        <span>《五羊石像》</span>
+                        <p class="title"> 《五羊石像》是由尹积昌、陈本宗、孔繁纬创作的花岗岩城市雕塑，始建于1960年4月，位于广州市越秀公园内的越秀山木壳岗。
+                            《五羊石像》整个石像连基座高11米。主羊头部高高昂起，口中衔穗，回眸微笑，其余四羊环绕于主羊周围，或戏耍，或吃草。五羊大小不一，姿态各异，造型优美，已经成为广州城市的标志。 </p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="广州景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/广州6.jpg" alt="">
+                        <h1 class="post">广州</h1>
+                        </p>
+                        <span>上下九步行街</span>
+                        <p class="title">
+                            上下九步行街地处广东省广州市荔湾区（俗称西关）的上九路、下九路、第十甫路之间，是广州市三大传统繁荣商业中心之一。全长约1237米，共有各类商业店铺238间和数千商户。在漫长的历史长河中，逐步形成了当今商业步行街中西合璧的四大西关风情特色，并构筑成一副独特的、绚丽多姿的西关风情画，营造出亮丽的旅游风景线。
+                        </p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="广州景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+
+
+                <!-- 杭州 -->
+
+                <div class="productbox">
+                    <div class="infobox">
+                        <p><img src="images/杭州1.jpg" alt="">
+                        <h1 class="post">杭州</h1>
+                        </p>
+                        <span>西湖</span>
+                        <p class="title">
+                            西湖南、西、北三面环山，湖中白堤、苏堤、杨公堤、赵公堤将湖面分割成若干水面。西湖的湖体轮廓呈近椭圆形，湖底部较为平坦，湖泊平均水深为2.27米，最深约5米，最浅不到1米。湖泊天然地表水源是金沙涧、龙泓涧、赤山涧（慧因涧）、长桥溪四条溪流。西湖地处中国东南丘陵边缘和中亚热带北缘，年均太阳总辐射量在100—110千卡/平方厘米之间，日照时数1800—2100小时。
+                        </p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="杭州景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/杭州2.jpg" alt="">
+                        <h1 class="post">杭州</h1>
+                        </p>
+                        <span>雷峰塔</span>
+                        <p class="title"> 杭州雷峰塔又名皇妃塔、西关砖塔，坐落在浙江省杭州市西湖风景区南岸夕照山的雷峰上。塔高71.679米，占地面积0.08平方公里，国家AAAA级旅游景区。
+                        </p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="杭州景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/杭州3.jpg" alt="">
+                        <h1 class="post">杭州</h1>
+                        </p>
+                        <span>雷峰塔</span>
+                        <p class="title">杭州雷峰塔又名皇妃塔、西关砖塔，坐落在浙江省杭州市西湖风景区南岸夕照山的雷峰上。塔高71.679米，占地面积0.08平方公里，国家AAAA级旅游景区。</p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="杭州景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/杭州4.jpg" alt="">
+                        <h1 class="post">杭州</h1>
+                        </p>
+                        <span>雷峰塔</span>
+                        <p class="title"> 杭州雷峰塔又名皇妃塔、西关砖塔，坐落在浙江省杭州市西湖风景区南岸夕照山的雷峰上。塔高71.679米，占地面积0.08平方公里，国家AAAA级旅游景区。
+                        </p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="杭州景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/杭州5.jpg" alt="">
+                        <h1 class="post">杭州</h1>
+                        </p>
+                        <span>杭州</span>
+                        <p class="title"> 水乡，以船代步，以鱼养育。。。。滋养一方人家</p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="杭州景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/杭州6.jpg" alt="">
+                        <h1 class="post">杭州</h1>
+                        </p>
+                        <span>奥林匹克体育中心</span>
+                        <p class="title"> 杭州奥林匹克体育中心，简称“杭州奥体中心”，位于浙江省杭州市钱塘江南岸 、钱江世纪城区块杭州奥体博览城核心区
+                            ，以七甲河为界跨越萧山区和滨江区；始建于2009年12月 ，为2022年杭州亚运会主会场 。</p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="杭州景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                </div>
+
+
+
+
+                <!-- 青岛 -->
+
+                <div class="productbox">
+                    <div class="infobox">
+                        <p><img src="images/青岛1.jpg" alt="">
+                        <h1 class="post">青岛</h1>
+                        </p>
+                        <span>青岛</span>
+                        <p class="title"> 这个红色的建筑物，是青岛的标志之一.</p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="青岛景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/青岛2.jpg" alt="">
+                        <h1 class="post">青岛</h1>
+                        </p>
+                        <span>崂山</span>
+                        <p class="title">·位于青岛东部，有“海上第一名山”的美称，最高峰为海拔1133米的巨峰，以雄伟、壮观、奇特、秀丽成为著名的道教名山。
+                            ·崂山的道教宫观、日出与云海，都极富盛名；南线是流清河和垭口；东线是仰口；中线是北九水；走水路在太清湾登陆的游客主要游览太清和上清景区。
+                            ·景区每年四月举办崂山登山节；每年五月举办崂山樱桃会， 届时游人众多，十分热闹。</p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="青岛景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/青岛3.jpg" alt="">
+                        <h1 class="post">青岛</h1>
+                        </p>
+                        <span>青岛</span>
+                        <p class="title"> 这个红色的建筑物，是青岛的标志之一.</p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="青岛景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/青岛4.jpg" alt="">
+                        <h1 class="post">青岛</h1>
+                        </p>
+                        <span>崂山周边</span>
+                        <p class="title"> ·位于青岛东部，有“海上第一名山”的美称，最高峰为海拔1133米的巨峰，以雄伟、壮观、奇特、秀丽成为著名的道教名山。
+                            ·崂山的道教宫观、日出与云海，都极富盛名；南线是流清河和垭口；东线是仰口；中线是北九水；走水路在太清湾登陆的游客主要游览太清和上清景区。
+                            ·景区每年四月举办崂山登山节；每年五月举办崂山樱桃会， 届时游人众多，十分热闹。</p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="青岛景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/青岛5.jpg" alt="">
+                        <h1 class="post">青岛</h1>
+                        </p>
+                        <span>崂山周边</span>
+                        <p class="title">·位于青岛东部，有“海上第一名山”的美称，最高峰为海拔1133米的巨峰，以雄伟、壮观、奇特、秀丽成为著名的道教名山。
+                            ·崂山的道教宫观、日出与云海，都极富盛名；南线是流清河和垭口；东线是仰口；中线是北九水；走水路在太清湾登陆的游客主要游览太清和上清景区。
+                            ·景区每年四月举办崂山登山节；每年五月举办崂山樱桃会， 届时游人众多，十分热闹。</p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="青岛景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/青岛6.jpg" alt="">
+                        <h1 class="post">青岛</h1>
+                        </p>
+                        <span>栈桥</span>
+                        <p class="title">·青岛最早的军事专用人工码头，是青岛标志性建筑和著名风景游览点。
+                            ·南端防波堤内部的八角楼被称为“回澜阁”。伫足于此，可以欣赏到青岛十景之一的“飞阁回澜”。
+                            ·北侧沿岸被称为“栈桥公园”，园内花草郁郁葱葱，设有石椅供游客休憩，可以欣赏海天风景。
+                        </p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="青岛景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+                <!-- 湛江 -->
+
+                <div class="productbox">
+                    <div class="infobox">
+                        <p><img src="images/湛江1.jpg" alt="">
+                        <h1 class="post">湛江</h1>
+                        </p>
+                        <span>观海长廊</span>
+                        <p class="title"> 观海长廊是广东“湛江八景”之一，“长廊观海”-观海长廊。
+                            湛江市”观海长廊“共三条，一条为霞山区的金海岸观海长廊（又名霞山观海长廊），一条为赤坎区的金沙湾观海长廊，一条是坡头区的奥体中心观海长廊。</p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="湛江景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/湛江2.jpg" alt="">
+                        <h1 class="post">湛江</h1>
+                        </p>
+                        <span>中国第一长滩</span>
+                        <p class="title">
+                            位于广东省湛江市东海岛东部东海岛海滩，面向南太平洋，呈南北走向，沙滩长28公里，宽度随潮位涨落约100至300米左右，海湾呈新月形，沙细且白，不仅是旅游度假的好去处，也是湛江市著名的旅游景点和标志。
+                        </p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="湛江景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/湛江3.jpg" alt="">
+                        <h1 class="post">湛江</h1>
+                        </p>
+                        <span>鱼港公园</span>
+                        <p class="title"> 位于湛江市区最靠南边的一个公园，可以看军舰，有到特呈岛的轮渡，阴天的凉爽让人神清气爽，到浴场来玩的人比晴天还要多。
+                            浴场免费提供遮阳伞，坐在伞下，吹着海风，陪着孩子，这种对于我们来说难得的休闲体验却是本地人日常生活的一部分。</p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="湛江景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/湛江4.jpg" alt="">
+                        <h1 class="post">湛江</h1>
+                        </p>
+                        <span>鱼港公园</span>
+                        <p class="title"> 位于湛江市区最靠南边的一个公园，可以看军舰，有到特呈岛的轮渡，阴天的凉爽让人神清气爽，到浴场来玩的人比晴天还要多。
+                            浴场免费提供遮阳伞，坐在伞下，吹着海风，陪着孩子，这种对于我们来说难得的休闲体验却是本地人日常生活的一部分。</p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="湛江景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/湛江5.jpg" alt="">
+                        <h1 class="post">湛江</h1>
+                        </p>
+                        <span>湖光岩</span>
+                        <p class="title">
+                            湖光岩风景区位于中国大陆最南端湛江市区西南18公里处，被联合国地质专家称为研究地球与地质科学的“天然年鉴”。总面积为38平方公里，园区是一个以玛珥火山地质地貌为主体，兼有海岸地貌、构造地质地貌等多种地质遗迹，自然生态良好的公园。
+                            景区是由雷琼世界地质公园博物馆、楞严寺、李纲醉月雕像、美食欢乐园、清风林、火山地质遗迹、高密度负离子区、董公亭、玛珥湖、陈济棠将军墓、白牛仙女雕像等20个景点组成，是集自然景观与人文景观于一体的旅游区。
+                        </p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="湛江景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/湛江6.jpg" alt="">
+                        <h1 class="post">湛江</h1>
+                        </p>
+                        <span>湖光岩——玛珥湖</span>
+                        <p class="title">
+                            湖光岩风景区位于中国大陆最南端湛江市区西南18公里处，被联合国地质专家称为研究地球与地质科学的“天然年鉴”。总面积为38平方公里，园区是一个以玛珥火山地质地貌为主体，兼有海岸地貌、构造地质地貌等多种地质遗迹，自然生态良好的公园。
+                            景区是由雷琼世界地质公园博物馆、楞严寺、李纲醉月雕像、美食欢乐园、清风林、火山地质遗迹、高密度负离子区、董公亭、玛珥湖、陈济棠将军墓、白牛仙女雕像等20个景点组成，是集自然景观与人文景观于一体的旅游区。
+                        </p>
+
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="湛江景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                </div>
+
+
+
+
+                <!-- 大理 -->
+
+                <div class="productbox">
+                    <div class="infobox">
+                        <p><img src="images/大理1.jpg" alt="">
+                        <h1 class="post">大理</h1>
+                        </p>
+                        <span>洱海</span>
+                        <p class="title">·大理“风花雪月”四大名景之一，外形如同耳朵，是由西洱河塌陷形成的高原湖泊。
+                            ·共有三岛、四洲、五湖、九曲，湖水清澈见底，被称作“群山间的无瑕美玉”。
+                            ·沿湖的人气村落有“洱海神光”的双廊、《心花怒放》取景地的才村、以白族民居建筑为特色的喜洲。</p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="大理景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/大理2.jpg" alt="">
+                        <h1 class="post">大理</h1>
+                        </p>
+                        <span>崇圣寺</span>
+                        <p class="title"> ·崇圣寺是大理国时期的皇家寺院，大理历史上首个规模最为宏大的古刹。
+                            ·崇圣寺以寺中一大二小三塔闻名于世，又称“大理三塔”，是中国著名的佛塔之一。
+                            ·三座古塔堪称大理地标，佛教盛行大理的见证，也是是苍山洱海的胜景之一。
+                            ·如今看到的寺院是重建的，而三塔已有千年历史的遗迹，是来此的最大看点。</p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="大理景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/大理3.jpg" alt="">
+                        <h1 class="post">大理</h1>
+                        </p>
+                        <span>大理古城</span>
+                        <p class="title"> ·大理古城位于风光秀丽的苍山脚下，是古代南诏国和大理国的都城。
+                            ·城内街道呈典型的棋盘式布局，是大理的旅游核心区。
+                            ·农历三四月的大理天气晴好，此时来大理欣赏风光、感受民俗最为合适。
+                            ·在这里蜂蜂们可以养花弄草、撸猫逗狗、逛小店、泡酒吧，享受文艺时尚慢生活。</p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="大理景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/大理4.jpg" alt="">
+                        <h1 class="post">大理</h1>
+                        </p>
+                        <span>寂照庵</span>
+                        <p class="title"> 大理感通山寂照庵，位于大理苍山圣应峰南麓，寺院被葱笼茂密的青松、古柏掩映，香烟缭绕在寺庵项端，缭绕在森林当中，周围松柏万株，环境寂静，为佛家净地。</p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="大理景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/大理5.jpg" alt="">
+                        <h1 class="post">大理</h1>
+                        </p>
+                        <span>大理古城</span>
+                        <p class="title">·大理古城位于风光秀丽的苍山脚下，是古代南诏国和大理国的都城。
+                            ·城内街道呈典型的棋盘式布局，是大理的旅游核心区。
+                            ·农历三四月的大理天气晴好，此时来大理欣赏风光、感受民俗最为合适。
+                            ·在这里蜂蜂们可以养花弄草、撸猫逗狗、逛小店、泡酒吧，享受文艺时尚慢生活。</p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="大理景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="infobox">
+                        <p><img src="images/大理6.jpg" alt="">
+                        <h1 class="post">大理</h1>
+                        </p>
+                        <span>洱海</span>
+                        <p class="title">·大理“风花雪月”四大名景之一，外形如同耳朵，是由西洱河塌陷形成的高原湖泊。
+                            ·共有三岛、四洲、五湖、九曲，湖水清澈见底，被称作“群山间的无瑕美玉”。
+                            ·沿湖的人气村落有“洱海神光”的双廊、《心花怒放》取景地的才村、以白族民居建筑为特色的喜洲。</p>
+                        <p>回忆<span><s>希望</s></span></p>
+                        <ul>
+                            <li>
+                                <p>100人！</p>喜欢
+                                <a class="liaojie" href="大理景区介绍.html">了解</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+        <!-- 你可能也喜欢 -->
+        <div class="wantgobox clear">
+            <!-- 标题 -->
+            <div class="title">
+                <p>各地景区习俗</p>
+                <span>
+                    等你来
+                    <i>学</i>
+                    习
+                </span>
+
+
+
+            </div>
+
+
+
+            <!-- 大屏文字介绍 -->
+            <div class="jiesao">
+                <div class="jiesao-1">
+                    <h1>Hello！！！！！</h1>
+                    <p>看看世界各地的景区，都有什么特点？</p>
+                    <img src="images/杭州1.jpg" alt="介绍" width="300" height="210">
+                    <p>你要不要看一下其他地区的景点？<br><a href="index.html">跟我走？</a></p>
+                </div>
+
+                <!--湛江 习俗 -->
+                <div class="jiesao-xishu jiesao-xs" title="1">
+
+                    <h1>湛江习俗</h1><br>
+                    <p>湛江的习俗有很多，人龙舞，飘色，汤鸡拜神，可谓是热闹非凡...</p>
+                    <img src="images/湛江12.jpg" alt="飘色">
+                    <img src="images/湛江13.jpg" alt="人龙舞">
+                    <img src="images/湛江14.jpg" alt="飘色">
+                    <img src="images/湛江15.jpg" alt="飘色">
+                    <img src="images/湛江16.jpg" alt="飘色">
+
+
+                    <p>人龙舞堪称雷州半岛的传统舞蹈之魂，其节奏鲜明，鼓点强劲，气势雄伟，催人奋进。传说龙能行云布雨、消灾降福，象征祥瑞，所以以舞龙的方式来祈求平安和丰收就成为全国各地的一种习俗。雷州半岛现有东海岛人龙舞和沈塘人龙舞。沈塘人龙舞（原始型）源于明朝嘉靖年间（1523年），沈塘村民为庆祝当地官宦陈仕恺新建沈塘圩而始创人龙（陈仕恺公乃进士出身，富甲雷阳，御诏赴安徽省灵壁县任丞署知县，秋满）。
+                        该舞蹈已被录入《中国民族民间舞蹈集成》(广东卷)，正在积极申报扩展为广东省非物质文化遗产保护项目。
+                        在庆祝活动上，村民们表演了原汁原味和经过包装两种不同风格，精彩独特的人龙舞等民俗表演，受到专家和乡亲们的欢迎。人龙舞增添了节日气氛，也表达了劳动人民对美好生活的祈求。</p>
+
+
+
+                </div>
+                <!-- 青岛习俗 -->
+                <div class="jiesao-xishu" title="2">
+
+                    <h1>青岛习俗</h1><br>
+                    <p>青岛是一个现代化的城市，但也在向世界展示着地方民俗特色文化。</p>
+                    <img src="images/青岛7.jpg">
+                    <img src="images/青岛8.jpg">
+                    <img src="images/青岛9.jpg">
+
+
+                    <p>地方民俗勾勒并凸显了青岛一地文化中的城市特色，而青岛能够为世界留下深刻记忆的，也正是囊括了民间传统文化在内的城市特色人文风貌。能够反映青岛一地人文风貌的，远不止于五花八门的传统民间工艺与民间小吃，还有近百年来青岛民间居住形式的里院建筑；具有浓郁地方特色的戏剧茂腔、柳腔；以妈祖为代表的沿海民间民俗信仰及各种民族文化节等。
+                    </p>
+
+
+                </div>
+
+                <!-- 大理习俗 -->
+                <div class="jiesao-xishu" title="2">
+
+                    <h1>大理习俗</h1><br>
+                    <p>大理是全国唯一的白族自治州，是白族的主要聚居地。。</p>
+                    <img src="images/大理7.jpg">
+                    <img src="images/大理8.jpg">
+
+
+                    <p>端午节白语称“五望五”，与汉族端午节同日。白族人把端午节称为“端午”，认为“端”即是开端，通常人们会把初一作为五月开始，但是在习俗上五月初五才是五月的开始。关于白族端午节的来源，说法不一，有人说是为了纪念战国时楚国投江溺死的屈原，也有人说是来自《白蛇传》。节日一到，除了和汉族人家一样有包粽子、赛龙舟等习俗外，还有白族自己独特的端午习俗。
+                    </p>
+
+                </div>
+
+
+                <!-- 杭州习俗 -->
+                <div class="jiesao-xishu" title="2">
+
+                    <h1>杭州习俗</h1><br>
+                    <p>青岛是一个现代化的城市，但也在向世界展示着地方民俗特色文化。</p>
+                    <img src="images/杭州7.jpg">
+                    <img src="images/杭州8.jpg">
+                    <img src="images/杭州9.jpg">
+
+                    <p>杭州人腊八日烧八寺香的习俗。过年时节杭州香火旺，除了宗教因素以外，还有一个鲜为人知的避难功能。早先杭州有句揶揄躲债人的老话，叫做“年廿七，勿着急；年廿八，想办法；年廿九，有有有；三十一日不见面，初一见面拱拱手。
+                    </p>
+
+                </div>
+
+
+                <!-- 广州习俗 -->
+                <div class="jiesao-xishu" title="2">
+
+                    <h1>广州习俗</h1><br>
+                    <p>老广州，粤语的城市，老西关的味道</p>
+                    <img src="images/广州7.jpg">
+                    <img src="images/广州8.jpg">
+                    <img src="images/广州9.jpg">
+
+
+                    <p>1.春节期间的除夕迎春花市和元宵节，端午节， 番禺荷花节，从化、增城的荔枝节，重阳节，中国旅游艺术节暨广东欢乐节，广州国际美食节等。
+                        2.还有每年元旦均举行的广州风情贺年缤纷大巡游，中秋节的中秋灯会，以及10月举行的广州旅游文艺会演等，为广州市这座"花城"增添了绚丽的色彩。
+
+                        3.春节风俗，插桃花、摆年橘、团年饭、煮汤圆、逗利是（领红包）、行花街、开年、人日、闹元宵、游花地等；</p>
+
+                </div>
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+
+
+    <!--鼠标移动到图片时显示大图  -->
+    <center class="datu">
+        <p><img src="images/广州1.jpg" title="广州景区" width="700" height="500" id="tu" class="tu" /></p>
+        <p>各地景区观赏</p>
+        <p> &nbsp;&nbsp;</p>
+        <p> &nbsp;&nbsp;</p>
+        <!-- &nbsp;&nbsp;代表空开 -->
+        <p class="xiaotu"><img src="images/广州1.jpg" title="景区" width="80" height="49"
+                onmouseover="changeTu('images/广州1.jpg')" style="cursor:pointer" />&nbsp;&nbsp;
+            <img src="images/杭州1.jpg" width="80" height="49" onmouseover="changeTu('images/杭州1.jpg')"
+                style="cursor:pointer" />&nbsp;&nbsp;
+            <img src="images/青岛1.jpg" width="80" height="49" onmouseover="changeTu('images/青岛1.jpg')"
+                style="cursor:pointer" />&nbsp;&nbsp;
+            <img src="images/湛江1.jpg" width="80" height="49" onmouseover="changeTu('images/湛江1.jpg')"
+                style="cursor:pointer" />
+            <img src="images/湛江2.jpg" width="80" height="49" onmouseover="changeTu('images/湛江2.jpg')"
+                style="cursor:pointer" />
+            <img src="images/青岛2.jpg" width="80" height="49" onmouseover="changeTu('images/青岛2.jpg')"
+                style="cursor:pointer" />
+            <img src="images/杭州3.jpg" width="80" height="49" onmouseover="changeTu('images/杭州3.jpg')"
+                style="cursor:pointer" />
+            <img src="images/广州4.jpg" width="80" height="49" onmouseover="changeTu('images/广州4.jpg')"
+                style="cursor:pointer" />
+        </p>
+    </center>
+
+
+
+
+    <!-- 告示底栏 -->
+
+    <div class="footer">
+
+        <div>
+            <p class="p1">
+                关于我们 合作推广 意见反馈 媒体合作 练习方式 帮助中心 媒体关注
+            </p>
+        </div>
+        <div class="dibuu11">
+            <p class="p2">
+                关于景区网站
+            <p class="p2-1">
+                该网站主要想展示的是各地区不同的旅游景点，图片来源于网上搜集，图片仅供参考。文字介绍也是网上收集而来，不代表本人观点。谢谢
+            </p>
+
+            </p>
+            <!-- 声明 -->
+        </div>
+        <div class="dibu">
+            <p class="dibuwenzi">此网页的素材均从网络查找，如有雷同纯属巧合，本人设计此网站仅为学习。</p>
+        </div>
+    </div>
+
+
+    <!-- 广告 -->
+    <div class="gg" id="gao1">
+        <div id="gao" class="gangaoimg">x</div>
+
+        <div class="ggtoubu">
+            <p>温馨提示</p>
+        </div>
+        <div class="ggneiron">
+
+            <p>疫情仍未结束</p>
+            <hr>
+            <p>请游玩戴好口罩</p>
+            <hr>
+            <p>健康快乐游玩</p>
+            <hr>
+            <p>开心健康回家</p>
+            <hr>
+        </div>
+
+        <!-- 新闻 -->
+        <div class="xinwen">
+
+            <p>景区动态</p>
+
+        </div>
+        <div class="dontai">
+
+
+            <p>旅游跟团要注意什么？</p>
+            <hr>
+            <p>游玩时打卡姿势！</p>
+            <hr>
+            <p>独行迷路怎么办？</p>
+            <hr>
+            <p>游玩时要注意的事项！</p>
+            <hr>
+
+
+
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+</body>
+
+</html>

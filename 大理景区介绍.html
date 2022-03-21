@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大理景区介绍</title>
+
+<style>
+  @charset "UTF-8";
+/* Body */
+body {
+	
+	background-color: #f2f2f2;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	font-style: normal;
+	font-weight: 200;
+}
+
+.home-1{
+  
+  color: #31A8DD;
+  height: 60px;
+  background-color: #85c3f5;
+  border-radius: 10px;
+}
+.home a{
+  text-decoration:none;
+  color: #f2f2f2;
+  font-size: 20px;
+  line-height: 60px;
+  float:right;
+  margin-right: 30px;
+
+}
+/* Container */
+.container {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	height: 1000px;
+	background-color: #FFFFFF;
+}
+.hero_header {
+	color: #FFFFFF;
+	text-align: center;
+  font-size: 150px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	letter-spacing: 4px;
+}
+/* 横幅 */
+.hero {
+  background: url(images/大理4.jpg);
+	/* background-color: #B3B3B3; */
+	padding-top: 150px;
+	padding-bottom: 50px;
+}
+.tagline {
+	text-align: center;
+	color: #FFFFFF;
+	margin-top: 4px;
+	font-weight: lighter;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+/* About Section */
+.text_column {
+	width: 29%;
+	text-align: justify;
+	font-weight: lighter;
+	line-height: 25px;
+	float: left;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: #A3A3A3;
+}
+.about {
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-top: 35px;
+	display: inline-block;
+	background-color: #FFFFFF;
+	margin-top: 0px;
+}
+/* Stats Gallery */
+/*底部大标题文字*/
+.parallax{
+	
+	text-align: right;
+	padding-right: 900px;
+	padding-top: 180px;
+	font-size:70px;
+/*	间距*/
+	letter-spacing: 2px;
+	margin-top: 0px;
+	background-color: #34444b;
+  border-radius: 20px;
+
+}
+/*隐藏*/
+.hidden {
+	display: none;
+}
+
+/*	广州下面的间距*/
+.tagline {
+	margin-top: 20px;
+	line-height: 22px;
+}
+
+
+/* 习俗 */
+.jiesao-xishu{
+
+height: 600px;
+width: 100%;
+background-color:  rgb(255, 255, 255);
+border-radius: 10px;
+
+
+}
+
+
+.jiesao-xishu h1{
+font-size: 60px;
+/* 字体 */
+text-align: center;
+
+/* 间距 */
+letter-spacing: 2px;
+color: #222627;
+margin: 10px;
+border-radius: 10px;
+
+}
+.jiesao-xishu p{
+text-align: center;
+letter-spacing: 2px;
+color: rgb(22, 61, 80);
+
+
+}
+.jiesao-xishu img{
+height: 300px; 
+width: 200px;
+border-radius: 10px;
+
+
+
+}
+
+ul {
+        list-style: none;
+    }
+
+    a {
+        /* 去除下划线
+         */
+        text-decoration: none;
+        color: #00848a;
+        font-size: 20px;
+    }
+
+/* 导航目录 */
+.daohan{
+  border: #81d8dd 1px solid;
+ background-color: #9acfe6;
+ border-radius: 20px;
+ position: relative;
+}
+.daohan-muluwenz{
+  height: 40px;
+        line-height: 40px;
+        /* 文字居中 */
+        text-align: center;
+        border: #083133 1px solid;
+        border-radius: 10px;
+        margin: 5px 0;
+        width: 90px;
+        padding: 0 10px;
+        background-color: #ffffff;
+        /* 水平，垂直，阴影距离  模糊程度 */
+        box-shadow: 0 0 5px 0 rgb(0, 0, 0);
+        
+
+        /* 固定 */
+        box-sizing: border-box;
+}
+
+.daohan-wenz{
+  background-color: #adcfdf;
+}
+
+
+
+
+/* 导航栏 */
+.daohan-jingdian{
+  display: none;
+  margin: 10px;
+  color: #2d9ce6;
+}
+.daohan-jingdian a{
+background-color: #46a1cc;
+border-radius: 20px;
+color: #FFFFFF;
+font-size: 20px;
+}
+.on{
+  display: block;
+}
+
+.jieshao{
+  position: absolute;
+  background-color: #a2e4e7;
+  float: right;
+  width: 1100px;
+  position: relative;
+  height: 220px;
+  margin:-220px 75px 0 0;
+  border-radius: 20px;
+  
+}
+</style>
+
+<script>
+  window.onload = function (){
+  // tab切换
+ //  这个是你想要定位到哪的地方的class
+  var aList = document.getElementsByClassName("daohan-muluwenz"),
+ //  第二个存放有效果的样式
+           aTab = document.getElementsByClassName("daohan-jingdian"),
+           // 这个记录上次高亮的地方
+           cityIndex = 0;
+
+       // 遍历全部列表
+       for (var a = 0; a < aList.length; a++) {
+           // 闭包加函数执行
+           (
+               function (a) {
+                   // 给每一个li列表添加事件
+                   aList[a].onclick = function () {
+                       aList[cityIndex].classList.remove("daohan-wenz");
+                       aTab[cityIndex].classList.remove("on");
+                       cityIndex = a;
+                       aList[a].classList.add("daohan-wenz");
+                       aTab[a].classList.add("on");
+                   }
+               })(a)
+
+       }}
+</script>
+<script>
+  window.onload = function (){
+  // tab切换
+ //  这个是你想要定位到哪的地方的class
+  var aList = document.getElementsByClassName("daohan-muluwenz"),
+ //  第二个存放有效果的样式
+           aTab = document.getElementsByClassName("daohan-jingdian"),
+           // 这个记录上次高亮的地方
+           cityIndex = 0;
+
+       // 遍历全部列表
+       for (var a = 0; a < aList.length; a++) {
+           // 闭包加函数执行
+           (
+               function (a) {
+                   // 给每一个li列表添加事件
+                   aList[a].onclick = function () {
+                       aList[cityIndex].classList.remove("daohan-wenz");
+                       aTab[cityIndex].classList.remove("on");
+                       cityIndex = a;
+                       aList[a].classList.add("daohan-wenz");
+                       aTab[a].classList.add("on");
+                   }
+               })(a)
+
+       }}
+</script>
+
+</head>
+<body> 
+  <div class="home-1"><ul class="home">
+    <a href="index.html">回到主页</a>
+  
+  </ul>
+
+
+  </div>
+<div class="container"> 
+ 
+  
+  
+  <section class="hero" id="hero" >
+	  
+    <h2 class="hero_header">大理</h2>
+    <p class="tagline">大理好玩的地方有哪些？</p>
+    <div class="daohan">
+      <ul class="daohan-mulu">
+        <li  class="daohan-muluwenz daohan-wenz">广州</li>
+        <li  class="daohan-muluwenz">湛江</li>
+        <li  class="daohan-muluwenz">大理</li>
+        <li  class="daohan-muluwenz">杭州</li>
+        <li  class="daohan-muluwenz">青岛</li>
+
+        
+  
+  <div class="jieshao">
+      
+    <div class="daohan-jingdian  on">
+      <h2>广州好玩点</h2>
+      <img src="images/广州1.jpg" alt="" width="150" height="100">
+      <img src="images/广州2.jpg" alt="" width="150" height="100">
+      <img src="images/广州3.jpg" alt="" width="150" height="100">
+      <img src="images/广州4.jpg" alt="" width="150" height="100">
+      <img src="images/广州5.jpg" alt="" width="150" height="100">
+      <img src="images/广州6.jpg" alt="" width="150" height="100">
+      <a href="广州景区介绍.html">点我跳到广州</a>
+
+    </div>
+    
+    <div class="daohan-jingdian">
+      <h2>湛江好玩点</h2>
+      <img src="images/湛江1.jpg" alt="" width="150" height="100">
+      <img src="images/湛江2.jpg" alt="" width="150" height="100">
+      <img src="images/湛江3.jpg" alt="" width="150" height="100">
+      <img src="images/湛江4.jpg" alt="" width="150" height="100">
+      <img src="images/湛江5.jpg" alt="" width="150" height="100">
+      <img src="images/湛江6.jpg" alt="" width="150" height="100">
+      <a href="湛江景区介绍.html">点我跳到湛江</a>
+    </div>
+    
+    <div class="daohan-jingdian">
+      <h2>大理好玩点</h2>
+      <img src="images/大理1.jpg" alt="" width="150" height="100">
+      <img src="images/大理2.jpg" alt="" width="150" height="100">
+      <img src="images/大理3.jpg" alt="" width="150" height="100">
+      <img src="images/大理4.jpg" alt="" width="150" height="100">
+      <img src="images/大理5.jpg" alt="" width="150" height="100">
+      <img src="images/大理6.jpg" alt="" width="150" height="100">
+      <a href="大理景区介绍.html">点我跳到大理</a>
+    </div>
+    
+    <div class="daohan-jingdian">
+      <h2>杭州好玩点</h2>
+      <img src="images/杭州1.jpg" alt="" width="150" height="100">
+      <img src="images/杭州2.jpg" alt="" width="150" height="100">
+      <img src="images/杭州3.jpg" alt="" width="150" height="100">
+      <img src="images/杭州4.jpg" alt="" width="150" height="100">
+      <img src="images/杭州5.jpg" alt="" width="150" height="100">
+      <img src="images/杭州6.jpg" alt="" width="150" height="100">
+      <a href="杭州景区介绍.html">点我跳到杭州</a>
+    </div>
+    
+    <div class="daohan-jingdian">
+      <h2>青岛好玩点</h2>
+      <img src="images/青岛1.jpg" alt="" width="150" height="100">
+      <img src="images/青岛2.jpg" alt="" width="150" height="100">
+      <img src="images/青岛3.jpg" alt="" width="150" height="100">
+      <img src="images/青岛4.jpg" alt="" width="150" height="100">
+      <img src="images/青岛5.jpg" alt="" width="150" height="100">
+      <img src="images/青岛6.jpg" alt="" width="150" height="100">
+      <a href="青岛景区介绍.html">点我跳到青岛</a>
+    </div>
+  </div>
+
+	  
+  </section>
+  <!-- 景区介绍 -->
+  <section class="about" id="about">
+    <h2 class="hidden">About</h2>
+    <h1>大理必打卡项目——喜洲古镇&nbsp;</h1>
+    <p class="text_column">·喜洲古镇西倚苍山，东临洱海，是电影《五朵金花》的故乡。
+        ·有着千年历史的白族历史文化名镇，具有浓郁的民族风情和历史文化气息。</p>
+    <p class="text_column">·白族民居是喜洲的一大特色，历经明清等时期，人们常去参观的即严、杨两家。
+        ·喜洲破酥粑粑是喜洲著名的风味小吃，色香味具佳，不妨品尝一下。</p>
+    <p class="text_column">用时参考
+        1-3小时
+        交通
+        在大理古城或下关乘坐开往喜洲的中巴，沿滇藏公路招手即停。
+        门票
+        免费
+        tips:
+        喜洲镇免费，镇上内部景点收费。
+        开放时间
+        全天</p>
+    <img src="images/大理9.jpg" alt="" width="300px" height="200px" style="margin:213px 0 0 -1236px;">
+  </section>
+  <hr>
+	
+  <section class="about" >
+    <h2 class="hidden">About</h2>
+    <h1>大理必打卡项目——&nbsp;沙溪古镇</h1>
+    <p class="text_column">·沙溪曾是茶马古道上的重要驿站，随着茶马古道的衰落，这里也就渐渐被遗忘了，也更好的保留了当年茶马小镇的风貌。
+        ·古镇现还有古戏台、玉津桥、兴教寺等景点，其中兴教寺是我国目前保存规模最大、最典型、最有代表性的佛教密宗“阿吒力”寺院。</p>
+    <p class="text_column">
+        ·另外，你还可以欣赏沙溪洞经古乐，看白族传统的霸王鞭，品尝沙溪的土特产地参子、松茸、羊乳饼等。</p>
+    <p class="text_column">用时参考
+        1天
+        交通
+        去沙溪古镇必须先乘车到剑川县中转，在大理客运北站每天8:00-17:00每15分钟有一班车发往剑川，车程约3个半小时，车费39元；剑川县城车站门口或甸南镇有微型车到沙溪，车程约45分钟，车费15
+        门票
+        免费
+        tips:
+        景区不收门票，古镇内小景点可购买联票
+        开放时间
+        全天 </p>
+    <img src="images/大理10.jpg" alt="" width="300px" height="200px"  style="margin:213px 0 0 -1236px;">
+  </section>
+  <hr>
+	 <section class="about" >
+    <h2 class="hidden">About</h2>
+    <h1>大理必打卡项目——洱海&nbsp;</h1>
+    <p class="text_column">大理“风花雪月”四大名景之一，外形如同耳朵，是由西洱河塌陷形成的高原湖泊。
+        ·共有三岛、四洲、五湖、九曲，湖水清澈见底，被称作“群山间的无瑕美玉”。</p>
+    <p class="text_column">沿湖的人气村落有“洱海神光”的双廊、《心花怒放》取景地的才村、以白族民居建筑为特色的喜洲。 </p>
+    <p class="text_column">杭州雷峰塔是西湖的标志性景观，“雷峰夕照”自古被封为西湖十景之一。游人登上雷峰新塔，站在五层的外观平座上，西湖山水美景和杭州城市繁华尽在游人的远望近看之中。极目四眺，碧波荡漾的西湖、秀美端庄的汪庄、初见轮廓的南线新景点、绿意葱笼的湖心三岛一览无余。</p>
+    <img src="images/大理11.jpg" alt="" width="300px" height="200px" style="margin:213px 0 0 -1236px;">
+  </section>
+  
+             <!-- 大理习俗 -->
+             <div class="jiesao-xishu" title="2">
+
+              <h1>大理习俗</h1><br>
+              <p>大理是全国唯一的白族自治州，是白族的主要聚居地。。</p>
+              <img src="images/大理7.jpg" >
+              <img src="images/大理8.jpg" >
+            
+          
+<p>端午节白语称“五望五”，与汉族端午节同日。白族人把端午节称为“端午”，认为“端”即是开端，通常人们会把初一作为五月开始，但是在习俗上五月初五才是五月的开始。关于白族端午节的来源，说法不一，有人说是为了纪念战国时楚国投江溺死的屈原，也有人说是来自《白蛇传》。节日一到，除了和汉族人家一样有包粽子、赛龙舟等习俗外，还有白族自己独特的端午习俗。</p>
+
+          </div>
+ 
+<hr>
+  <section class="banner">
+    <h2 class="parallax">大理欢迎你&nbsp;
+
+
+
+
+    </h2>
+
+
+   
+  </section>
+
+ </div>
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>青岛景区介绍</title>
+<style>
+  @charset "UTF-8";
+/* Body */
+body {
+	
+	background-color: #f2f2f2;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	font-style: normal;
+	font-weight: 200;
+}
+
+.home-1{
+  
+  color: #31A8DD;
+  height: 60px;
+  background-color: #85c3f5;
+  border-radius: 10px;
+}
+.home a{
+  text-decoration:none;
+  color: #f2f2f2;
+  font-size: 20px;
+  line-height: 60px;
+  float:right;
+  margin-right: 30px;
+
+}
+/* Container */
+.container {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	height: 1000px;
+	background-color: #FFFFFF;
+}
+.hero_header {
+	color: #FFFFFF;
+	text-align: center;
+  font-size: 150px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	letter-spacing: 4px;
+}
+/* 横幅 */
+.hero {
+  background: url(images/青岛3.jpg);
+	/* background-color: #B3B3B3; */
+	padding-top: 150px;
+  /* 距离底部永远50px */
+	padding-bottom: 50px;
+}
+.tagline {
+	text-align: center;
+	color: #FFFFFF;
+	margin-top: 4px;
+	font-weight: lighter;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+/* About Section */
+.text_column {
+	width: 29%;
+	text-align: justify;
+	font-weight: lighter;
+	line-height: 25px;
+	float: left;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: #A3A3A3;
+}
+.about {
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-top: 35px;
+	display: inline-block;
+	background-color: #FFFFFF;
+	margin-top: 0px;
+}
+/* Stats Gallery */
+/*底部大标题文字*/
+.parallax{
+	
+	text-align: right;
+	padding-right: 900px;
+	padding-top: 180px;
+	font-size:70px;
+/*	间距*/
+	letter-spacing: 2px;
+	margin-top: 0px;
+	background-color: #3a474d;
+  border-radius: 20px;
+
+}
+/*隐藏*/
+.hidden {
+	display: none;
+}
+
+/*	青岛下面的间距*/
+.tagline {
+	margin-top: 20px;
+	line-height: 22px;
+}
+
+
+
+
+/* 习俗 */
+.jiesao-xishu{
+
+height: 600px;
+width: 100%;
+background-color:  rgb(255, 255, 255);
+border-radius: 10px;
+
+
+}
+
+
+.jiesao-xishu h1{
+font-size: 60px;
+/* 字体 */
+text-align: center;
+
+/* 间距 */
+letter-spacing: 2px;
+color: #222627;
+margin: 10px;
+border-radius: 10px;
+
+}
+.jiesao-xishu p{
+text-align: center;
+letter-spacing: 2px;
+color: rgb(22, 61, 80);
+
+
+}
+.jiesao-xishu img{
+height: 300px; 
+width: 200px;
+border-radius: 10px;
+
+
+
+}
+
+ul {
+        list-style: none;
+    }
+
+    a {
+        /* 去除下划线
+         */
+        text-decoration: none;
+        color: #00848a;
+        font-size: 20px;
+    }
+
+/* 导航目录 */
+.daohan{
+  border: #00848a 1px solid;
+ background-color: #87ceec;
+ border-radius: 20px;
+ position: relative;
+}
+.daohan-muluwenz{
+  height: 40px;
+        line-height: 40px;
+        /* 文字居中 */
+        text-align: center;
+        border: #083133 1px solid;
+        border-radius: 10px;
+        margin: 5px 0;
+        width: 90px;
+        padding: 0 10px;
+        background-color: #ffffff;
+        /* 水平，垂直，阴影距离  模糊程度 */
+        box-shadow: 0 0 5px 0 rgb(0, 0, 0);
+        
+
+        /* 固定 */
+        box-sizing: border-box;
+}
+
+.daohan-wenz{
+  background-color: #77bedf;
+}
+
+
+
+
+/* 导航栏 */
+.daohan-jingdian{
+  display: none;
+  margin: 10px;
+  color: #2d9ce6;
+}
+.daohan-jingdian a{
+background-color: #46a1cc;
+border-radius: 20px;
+color: #FFFFFF;
+font-size: 20px;
+}
+.on{
+  display: block;
+}
+
+.jieshao{
+  position: absolute;
+  background-color: #9fcfd1;
+  float: right;
+  width: 1100px;
+  position: relative;
+  height: 220px;
+  margin:-220px 75px 0 0;
+  border-radius: 20px;
+  
+}
+</style>
+
+<script>
+  window.onload = function (){
+  // tab切换
+ //  这个是你想要定位到哪的地方的class
+  var aList = document.getElementsByClassName("daohan-muluwenz"),
+ //  第二个存放有效果的样式
+           aTab = document.getElementsByClassName("daohan-jingdian"),
+           // 这个记录上次高亮的地方
+           cityIndex = 0;
+
+       // 遍历全部列表
+       for (var a = 0; a < aList.length; a++) {
+           // 闭包加函数执行
+           (
+               function (a) {
+                   // 给每一个li列表添加事件
+                   aList[a].onclick = function () {
+                       aList[cityIndex].classList.remove("daohan-wenz");
+                       aTab[cityIndex].classList.remove("on");
+                       cityIndex = a;
+                       aList[a].classList.add("daohan-wenz");
+                       aTab[a].classList.add("on");
+                   }
+               })(a)
+
+       }}
+</script>
+
+</head>
+<body> 
+  <div class="home-1"><ul class="home">
+    <a href="index.html">回到主页</a>
+  
+  </ul>
+
+
+  </div>
+<div class="container"> 
+ 
+  
+  
+  <section class="hero" id="hero" >
+	  
+    <h2 class="hero_header">青岛</h2>
+    <p class="tagline">青岛好玩的地方有哪些？</p>
+	  <div class="daohan">
+      <ul class="daohan-mulu">
+        <li  class="daohan-muluwenz daohan-wenz">广州</li>
+        <li  class="daohan-muluwenz">湛江</li>
+        <li  class="daohan-muluwenz">大理</li>
+        <li  class="daohan-muluwenz">杭州</li>
+        <li  class="daohan-muluwenz">青岛</li>
+
+        
+  
+  <div class="jieshao">
+      
+    <div class="daohan-jingdian  on">
+      <h2>广州好玩点</h2>
+      <img src="images/广州1.jpg" alt="" width="150" height="100">
+      <img src="images/广州2.jpg" alt="" width="150" height="100">
+      <img src="images/广州3.jpg" alt="" width="150" height="100">
+      <img src="images/广州4.jpg" alt="" width="150" height="100">
+      <img src="images/广州5.jpg" alt="" width="150" height="100">
+      <img src="images/广州6.jpg" alt="" width="150" height="100">
+      <a href="广州景区介绍.html">点我跳到广州</a>
+
+    </div>
+    
+    <div class="daohan-jingdian">
+      <h2>湛江好玩点</h2>
+      <img src="images/湛江1.jpg" alt="" width="150" height="100">
+      <img src="images/湛江2.jpg" alt="" width="150" height="100">
+      <img src="images/湛江3.jpg" alt="" width="150" height="100">
+      <img src="images/湛江4.jpg" alt="" width="150" height="100">
+      <img src="images/湛江5.jpg" alt="" width="150" height="100">
+      <img src="images/湛江6.jpg" alt="" width="150" height="100">
+      <a href="湛江景区介绍.html">点我跳到湛江</a>
+    </div>
+    
+    <div class="daohan-jingdian">
+      <h2>大理好玩点</h2>
+      <img src="images/大理1.jpg" alt="" width="150" height="100">
+      <img src="images/大理2.jpg" alt="" width="150" height="100">
+      <img src="images/大理3.jpg" alt="" width="150" height="100">
+      <img src="images/大理4.jpg" alt="" width="150" height="100">
+      <img src="images/大理5.jpg" alt="" width="150" height="100">
+      <img src="images/大理6.jpg" alt="" width="150" height="100">
+      <a href="大理景区介绍.html">点我跳到大理</a>
+    </div>
+    
+    <div class="daohan-jingdian">
+      <h2>杭州好玩点</h2>
+      <img src="images/杭州1.jpg" alt="" width="150" height="100">
+      <img src="images/杭州2.jpg" alt="" width="150" height="100">
+      <img src="images/杭州3.jpg" alt="" width="150" height="100">
+      <img src="images/杭州4.jpg" alt="" width="150" height="100">
+      <img src="images/杭州5.jpg" alt="" width="150" height="100">
+      <img src="images/杭州6.jpg" alt="" width="150" height="100">
+      <a href="杭州景区介绍.html">点我跳到杭州</a>
+    </div>
+    
+    <div class="daohan-jingdian">
+      <h2>青岛好玩点</h2>
+      <img src="images/青岛1.jpg" alt="" width="150" height="100">
+      <img src="images/青岛2.jpg" alt="" width="150" height="100">
+      <img src="images/青岛3.jpg" alt="" width="150" height="100">
+      <img src="images/青岛4.jpg" alt="" width="150" height="100">
+      <img src="images/青岛5.jpg" alt="" width="150" height="100">
+      <img src="images/青岛6.jpg" alt="" width="150" height="100">
+      <a href="青岛景区介绍.html">点我跳到青岛</a>
+    </div>
+  </div>
+
+
+
+      </ul>
+    </div>
+	  
+  </section>
+  <!-- 景区介绍 -->
+  <section class="about" id="about">
+    <h2 class="hidden">About</h2>
+    <h1>青岛必打卡项目——八大关&nbsp;</h1>
+    <p class="text_column">关内花石楼和公主楼最为有名，建筑风格独特，需要收取门票，是来此必打卡地。
+        ·除观赏建筑外，还可欣赏八大关四季美景，韶关路全植碧桃，春季开花；正阳关路遍种紫薇，夏天盛开；居庸关路是五角枫，秋季霜染枫红；紫荆关路两侧是成排的雪松，四季常青。</p>
+    <p class="text_column">关内花石楼和公主楼最为有名，建筑风格独特，需要收取门票，是来此必打卡地。
+        ·除观赏建筑外，还可欣赏八大关四季美景，韶关路全植碧桃，春季开花；正阳关路遍种紫薇，夏天盛开；居庸关路是五角枫，秋季霜染枫红；紫荆关路两侧是成排的雪松，四季常青。</p>
+    <p class="text_column">交通
+        公交：
+        乘坐458/501路公交车至宁武关路公交站，步行约49米即可到达
+        地铁：
+        乘坐地铁3号线至太平角公园地铁站，步行约300米即可到达
+        门票
+        免费
+        tips:
+        八大关内部分景点需收取门票，具体价格以景区公示为准。</p>
+    <img src="images/青岛10.jpg" alt="" width="300px" height="200px" style="margin:213px 0 0 -1236px;">
+  </section>
+  <hr>
+	
+  <section class="about" >
+    <h2 class="hidden">About</h2>
+    <h1>青岛必打卡项目——&nbsp;崂山风景区</h1>
+    <p class="text_column">··位于青岛东部，有“海上第一名山”的美称，最高峰为海拔1133米的巨峰，以雄伟、壮观、奇特、秀丽成为著名的道教名山。
+        ·崂山的道教宫观、日出与云海，都极富盛名；南线是流清河和垭口；东线是仰口；中线是北九水；走水路在太清湾登陆的游客主要游览太清和上清景区。</p>
+    <p class="text_column">
+        ·景区每年四月举办崂山登山节；每年五月举办崂山樱桃会， 届时游人众多，十分热闹。</p>
+    <p class="text_column">九水游览区：
+        自驾：由青银高速李村出口下，沿九水东路、滨海公路、九水旅游专用路至九水游客服务中心，换乘观光车进入；
+        公交：乘坐112路、619路，639路车至卧龙村，换乘观光车进入；
+        地铁：乘坐11号线至北九水站，下地铁即可在零换乘中心购票乘坐观光车进入景区。
+        门票
+        淡季:一票制门票160人民币/流清—太清、巨峰游览区 华严—仰口游览区（2日内有效）120人民币/九水游览区（当日有效）70人民币 (1月1日-3月31日 周一-周日)
+        旺季:一票制联票【景区大通票】210人民币/流清—太清、巨峰游览区 华严—仰口游览区（2日内有效）150人民币/九水游览区（当日有效）90人民币 (4月1日-12月</p>
+    <img src="images/青岛2.jpg" alt="" width="300px" height="200px"  style="margin:213px 0 0 -1236px;">
+  </section>
+  <hr>
+	 <section class="about" >
+    <h2 class="hidden">About</h2>
+    <h1>青岛必打卡项目——栈桥&nbsp;</h1>
+    <p class="text_column">青岛最早的军事专用人工码头，是青岛标志性建筑和著名风景游览点。
+        ·南端防波堤内部的八角楼被称为“回澜阁”。伫足于此，可以欣赏到青岛十景之一的“飞阁回澜”。</p>
+    <p class="text_column">·北侧沿岸被称为“栈桥公园”，园内花草郁郁葱葱，设有石椅供游客休憩，可以欣赏海天风景。  </p>
+    <p class="text_column">交通
+        乘坐6、202、217、220、25路至广西路浙江路站(公交站)下车，步行约300米可达。
+        门票
+        (1月1日-12月31日 周一-周日)
+        tips:
+        具体详情请咨询景区
+        开放时间
+        全天 (1月1日-12月31日 周一-周日)</p>
+    <img src="images/青岛5.jpg" alt="" width="300px" height="200px" style="margin:213px 0 0 -1236px;">
+  </section>
+  <!-- 青岛习俗 -->
+  <div class="jiesao-xishu" title="2">
+
+    <h1>青岛习俗</h1><br>
+    <p>青岛是一个现代化的城市，但也在向世界展示着地方民俗特色文化。</p>
+    <img src="images/青岛7.jpg" >
+    <img src="images/青岛8.jpg" >
+    <img src="images/青岛9.jpg" >
+
+
+    <p>地方民俗勾勒并凸显了青岛一地文化中的城市特色，而青岛能够为世界留下深刻记忆的，也正是囊括了民间传统文化在内的城市特色人文风貌。能够反映青岛一地人文风貌的，远不止于五花八门的传统民间工艺与民间小吃，还有近百年来青岛民间居住形式的里院建筑；具有浓郁地方特色的戏剧茂腔、柳腔；以妈祖为代表的沿海民间民俗信仰及各种民族文化节等。</p>
+
+
+</div>
+ 
+<hr>
+  <section class="banner">
+    <h2 class="parallax">青岛欢迎你&nbsp;
+
+
+
+
+    </h2>
+
+
+   
+  </section>
+
+ </div>
+</body>
+</html>
